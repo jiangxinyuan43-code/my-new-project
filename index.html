@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>欢迎新同学 - 新东方沙发区自助入职指南</title>
+    <title>欢迎各位老师 - 新东方沙发区自助入职指南</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -438,7 +438,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            text-decoration: none; /* 防止a标签产生下划线 */
+            text-decoration: none;
         }
 
         /* 极速一键跳转卡片排版 */
@@ -483,6 +483,9 @@
             text-decoration: none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.06);
             transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
         }
         
         .inner-jump-btn:active {
@@ -568,9 +571,61 @@
             border-radius: 10px;
             object-fit: contain;
         }
+
+        /* 🚀 专属高颜值微信防拦截引导遮罩层 */
+        .wechat-browser-guide-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            color: white;
+            display: none;
+            text-align: right;
+            padding-right: 30px;
+            padding-top: 20px;
+        }
+        
+        .wechat-browser-guide-overlay.active {
+            display: block;
+        }
+
+        .wechat-hint-box {
+            display: inline-block;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 16px;
+            border-radius: 16px;
+            margin-top: 20px;
+            max-width: 280px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .wechat-hint-box p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
+
+<div class="wechat-browser-guide-overlay" id="wechat-safe-guide" onclick="closeWechatGuide()">
+    <img src="https://cropgif.net/images/1781084740659-fea66a88-9c84-48ad-beae-2ee20871585a.jpg" style="display:none;" alt="preload">
+    <div style="font-size: 44px; color: #00A0E9; animation: bounce 1.5s infinite; margin-bottom: 5px;">
+        <i class="fa-solid fa-arrow-turn-up"></i>
+    </div>
+    <div class="wechat-hint-box">
+        <p style="font-weight: bold; color: #00A0E9; font-size:16px;"><i class="fa-solid fa-compass"></i> 微信内无法直接唤醒钉钉</p>
+        <p>1. 请点击右上角的 <strong>「 ··· 」</strong> 按钮</p>
+        <p>2. 安卓手机选择：<strong>「 在浏览器打开 」</strong></p>
+        <p>3. 苹果手机选择：<strong>「 在 Safari 打开 」</strong></p>
+        <p style="font-size: 11px; opacity: 0.6; margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 6px; text-align: center;">💡 切换到浏览器后即可一键秒开钉钉</p>
+    </div>
+</div>
 
 <div class="phone-container">
 
@@ -644,7 +699,7 @@
         
         <div style="border: 1px solid #E0E0E0; border-radius: 12px; padding: 12px; background: white; text-align: center;">
             <span style="font-size:12px; color:var(--text-main);">
-                ☕ 渴了累了？从<b>西侧玻璃门</b>直走，<br><b>柜子号 F 和 N 正中间</b>就是洗手间和饮水机。
+                ☕ 渴了累了？从<b>西侧玻璃门</b>直走，<br><b>柜子号 F 和 N 正中间</b>就是洗手间 and 饮水机。
             </span>
         </div>
 
@@ -694,14 +749,16 @@
         <div class="one-click-card-panel" style="background: linear-gradient(135deg, #00A0E9 0%, #007bb5 100%);">
             <h4><i class="fa-brands fa-dingtalk"></i> 1. 向小助手享享发起测试提问</h4>
             <p>成功登录云办公App后，请点击下方按钮直接唤醒钉钉，向AI小助手享享随机提问一个问题进行测试（例如：发送“第三代社保卡申领”）。</p>
-            <a class="inner-jump-btn" href="dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ" style="color: #00A0E9;">
+            
+            <button class="inner-jump-btn" onclick="handleDingtalkJump()" style="color: #00A0E9;">
                 <i class="fa-solid fa-paper-plane"></i> 一键进入钉钉享享对话框
-            </a>
+            </button>
         </div>
 
         <div class="one-click-card-panel">
             <h4><i class="fa-solid fa-file-pen"></i> 2. 填写完成入职签到问卷</h4>
-            <p>提问互动完成后，请点击下方按钮直接进入入职问卷，完成本次报到签到。手续完成后，即可抱走茶几上的精美大礼包，并联系部门老师咨询后续安排！</p>
+            <p>提问互动完成后，请点击下方按钮直接进入入职问卷完成本次报到签到。手续完成后，即可抱走茶几上的精美大礼包，并联系部门老师咨询后续安排！</p>
+            
             <a class="inner-jump-btn" href="https://form.wjx.com/vm/PnjcYyg.aspx#" target="_blank">
                 <i class="fa-solid fa-square-check"></i> 点击直接填写签到问卷
             </a>
@@ -739,7 +796,6 @@
 </div>
 
 <script>
-    // 获取真实音频控制对象
     const audio = document.getElementById('real-podcast-audio');
     const playBtn = document.getElementById('audio-play-btn');
     const progressFill = document.getElementById('audio-progress-fill');
@@ -747,7 +803,30 @@
     const speedIndicator = document.getElementById('speed-indicator');
     const loopBtn = document.getElementById('loop-btn');
 
-    // 监听真实音频时间更新事件
+    // ⚡️ 核心业务逻辑：智能判断是否在微信浏览器中
+    function isWechatBrowser() {
+        const ua = navigator.userAgent.toLowerCase();
+        return ua.indexOf('micromessenger') !== -1;
+    }
+
+    // ⚡️ 处理钉钉跳转的主控制函数
+    function handleDingtalkJump() {
+        const dingUrl = "dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ";
+        
+        if (isWechatBrowser()) {
+            // 如果是在微信内访问，弹出防拦截引导层
+            document.getElementById('wechat-safe-guide').classList.add('active');
+        } else {
+            // 如果已经在系统浏览器内，一键直达唤醒钉钉
+            window.location.href = dingUrl;
+        }
+    }
+
+    function closeWechatGuide() {
+        document.getElementById('wechat-safe-guide').classList.remove('active');
+    }
+
+    // 音频核心驱动
     audio.addEventListener('timeupdate', () => {
         if (audio.duration) {
             const percentage = (audio.currentTime / audio.duration) * 100;

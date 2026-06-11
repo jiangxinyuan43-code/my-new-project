@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>欢迎新同学 - 新东方沙发区自助入职指南</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --xdf-green: #00A0E9; /* 新东方经典绿标准色值 */
+            --xdf-light-green: #E6F4FA;
+            --xdf-dark: #2C3E50;
+            --xdf-gray: #F8F9FA;
+            --text-main: #333333;
+            --text-muted: #7F8C8D;
+            --shadow: 0 8px 24px rgba(0, 160, 233, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK SC", sans-serif;
+            background-color: var(--xdf-gray);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* 手机端长图容器 */
+        .phone-container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.05);
+            padding-bottom: 40px;
+        }
+
+        /* 1. 头部迎新 */
+        .header-banner {
+            background: linear-gradient(135deg, #00A0E9 0%, #0084c2 100%);
+            color: #ffffff;
+            padding: 40px 24px;
+            text-align: center;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-banner::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -60px;
+            right: -60px;
+        }
+
+        .logo-placeholder {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .header-banner h1 {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .header-banner p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* 享享向导气泡组件 */
+        .xiangxiang-guide {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 24px;
+            background-color: var(--xdf-light-green);
+            padding: 16px;
+            border-radius: 16px;
+            border-left: 5px solid var(--xdf-green);
+        }
+
+        .avatar-box {
+            width: 48px;
+            height: 48px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: 2px solid var(--xdf-green);
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .guide-bubble {
+            font-size: 14px;
+            color: var(--xdf-dark);
+        }
+
+        .guide-bubble strong {
+            color: var(--xdf-green);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* 2. 模块化分步导航 */
+        .flow-nav {
+            padding: 0 24px;
+            margin-bottom: 24px;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 4px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-item i {
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .nav-item span {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .nav-item.active {
+            background-color: var(--xdf-light-green);
+            border-color: var(--xdf-green);
+        }
+
+        .nav-item.active i, .nav-item.active span {
+            color: var(--xdf-green);
+            font-weight: bold;
+        }
+
+        .nav-item.completed i {
+            color: #2ECC71;
+        }
+
+        /* 核心步骤内容区卡片 */
+        .step-content-card {
+            background: #ffffff;
+            margin: 0 24px 24px 24px;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 160, 233, 0.08);
+            display: none;
+        }
+
+        .step-content-card.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--xdf-dark);
+        }
+
+        .card-title i {
+            color: var(--xdf-green);
+        }
+
+        /* 3. 真实音频播放器组件 */
+        .player-container {
+            background: var(--xdf-gray);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .podcast-ui {
+            background: white;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .podcast-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .progress-bar-container {
+            height: 6px;
+            background: #E0E0E0;
+            border-radius: 3px;
+            position: relative;
+            margin-bottom: 14px;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--xdf-green);
+            width: 0%;
+            border-radius: 3px;
+            position: relative;
+            transition: width 0.1s linear;
+        }
+
+        .progress-handle {
+            width: 12px;
+            height: 12px;
+            background: var(--xdf-green);
+            border-radius: 50%;
+            position: absolute;
+            right: -6px;
+            top: -3px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .podcast-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .audio-control-btn {
+            background: none;
+            border: none;
+            color: var(--xdf-dark);
+            font-size: 18px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .audio-control-btn.main-play {
+            color: var(--xdf-green);
+            font-size: 36px;
+        }
+
+        .speed-badge {
+            font-size: 11px;
+            background: var(--xdf-light-green);
+            color: var(--xdf-green);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* 纯静态指引组件样式 */
+        .wifi-action-card {
+            background: var(--xdf-light-green);
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .copy-badge-btn {
+            background: var(--xdf-green);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,160,233,0.2);
+            cursor: pointer;
+        }
+
+        /* 引导核心平台的专属面板 */
+        .platform-redirect-box {
+            background: #FDFEFE;
+            border: 2px dashed #BDC3C7;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 14px;
+        }
+
+        .platform-redirect-box i {
+            font-size: 36px;
+            color: #34495E;
+            margin-bottom: 10px;
+        }
+
+        .platform-redirect-box h4 {
+            font-size: 15px;
+            color: var(--xdf-dark);
+            margin-bottom: 6px;
+        }
+
+        .platform-redirect-box p {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .step-badge-indicator {
+            display: inline-block;
+            background: #34495E;
+            color: white;
+            font-size: 11px;
+            padding: 2px 10px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* 嵌入长图的样式 */
+        .embedded-guide-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-top: 10px;
+            border: 1px solid #EEE;
+        }
+
+        /* APP下载排版样式 */
+        .app-download-container {
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        .app-qr-box {
+            width: 160px;
+            height: 160px;
+            margin: 12px auto;
+            border: 1px solid #EEE;
+            padding: 10px;
+            border-radius: 14px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        
+        .app-qr-box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tips-list-box {
+            background: #F9FBFC;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: left;
+            font-size: 12px;
+            color: #4A5568;
+            border: 1px solid #EDF2F7;
+        }
+
+        .tips-list-box h5 {
+            font-size: 13px;
+            color: var(--xdf-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tips-list-box p {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .tips-list-box p strong {
+            color: #E53E3E;
+        }
+
+        /* 通用主打卡通关按钮 */
+        .action-submit-btn {
+            width: 100%;
+            background: var(--xdf-green);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 160, 233, 0.3);
+            cursor: pointer;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none; /* 防止a标签产生下划线 */
+        }
+
+        /* 极速一键跳转卡片排版 */
+        .one-click-card-panel {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(56,239,125,0.25);
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .one-click-card-panel h4 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .one-click-card-panel p {
+            font-size: 12px;
+            opacity: 0.9;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        /* 专属子跳转跳转按钮 */
+        .inner-jump-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: white;
+            color: #11998e;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            transition: all 0.2s ease;
+        }
+        
+        .inner-jump-btn:active {
+            transform: scale(0.98);
+            background: #F4FBF7;
+        }
+
+        /* 底部双保障入口 */
+        .bottom-support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 0 24px;
+            margin-top: 10px;
+        }
+
+        .support-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #EEE;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .support-card i {
+            font-size: 20px;
+            color: var(--xdf-green);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* 模态弹窗 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-body {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            font-size: 18px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .modal-qr {
+            width: 190px;
+            height: 190px;
+            margin: 16px auto;
+            border: 1px solid #EEE;
+            padding: 4px;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-container">
+
+    <div class="header-banner">
+        <div class="logo-placeholder"><i class="fa-solid fa-graduation-cap"></i> 新东方 NEW ORIENTAL</div>
+        <h1>你好，新同学！</h1>
+        <p>欢迎来到 3 层入职等待区，开启极速自助报到</p>
+    </div>
+
+    <div class="xiangxiang-guide">
+        <div class="avatar-box">🐏</div>
+        <div class="guide-bubble">
+            <strong id="xiangxiang-title">享享温馨提示：入职播客</strong>
+            <span id="xiangxiang-text">欢迎入座！请戴上耳机，听听我为你准备的入职避坑播客。你的专属大礼包就在茶几上，听完音频后，请按步骤去微信职前服务平台完成办理。</span>
+        </div>
+    </div>
+
+    <div class="flow-nav">
+        <div class="nav-grid">
+            <div class="nav-item active" id="nav-step1" onclick="switchStep(1)">
+                <i class="fa-solid fa-radio"></i>
+                <span>1.入职播客</span>
+            </div>
+            <div class="nav-item" id="nav-step2" onclick="switchStep(2)">
+                <i class="fa-solid fa-id-card"></i>
+                <span>2.材料提交</span>
+            </div>
+            <div class="nav-item" id="nav-step3" onclick="switchStep(3)">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>3.云办公下载</span>
+            </div>
+            <div class="nav-item" id="nav-step4" onclick="switchStep(4)">
+                <i class="fa-solid fa-gift"></i>
+                <span>4.自取礼包</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="step-content-card active" id="card-step1">
+        <div class="card-title"><i class="fa-solid fa-circle-play"></i> 模块一：新同学专属避坑播客</div>
+        
+        <div class="wifi-action-card" style="margin-bottom: 12px; padding: 10px 14px;">
+            <div style="font-size:13px; color:var(--xdf-dark); font-weight:bold;">
+                <i class="fa-solid fa-wifi"></i> 专属Wi-Fi：XDF (免密弹窗连)
+            </div>
+            <button class="copy-badge-btn" style="padding: 4px 10px; font-size: 11px;" onclick="copyWifi()">复制网名</button>
+        </div>
+
+        <div class="player-container">
+            <audio id="real-podcast-audio" src="https://cropgif.net/audio/1780969327343-d1a52b8f-4390-4864-8d7f-0de83bb3e3f8.mp3" preload="metadata"></audio>
+
+            <div class="podcast-ui">
+                <div class="podcast-info">
+                    <span style="font-weight:600; color:var(--xdf-dark);"><i class="fa-solid fa-headphones"></i> 点击下方按钮开始收听</span>
+                    <span class="speed-badge" id="speed-indicator" onclick="changePlaybackSpeed()">1.0X 倍速</span>
+                </div>
+                
+                <div class="progress-bar-container" id="progress-bar-bg" onclick="scrubAudio(event)">
+                    <div class="progress-fill" id="audio-progress-fill">
+                        <div class="progress-handle"></div>
+                    </div>
+                </div>
+                
+                <div class="podcast-controls">
+                    <span style="font-size: 11px; color: var(--text-muted);" id="audio-time-display">00:00 / --:--</span>
+                    <button class="audio-control-btn main-play" id="audio-play-btn" onclick="toggleAudio()"><i class="fa-solid fa-circle-play"></i></button>
+                    <button class="audio-control-btn" id="loop-btn" onclick="toggleLoop()" style="color: var(--text-muted);"><i class="fa-solid fa-repeat"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div style="border: 1px solid #E0E0E0; border-radius: 12px; padding: 12px; background: white; text-align: center;">
+            <span style="font-size:12px; color:var(--text-main);">
+                ☕ 渴了累了？从<b>西侧玻璃门</b>直走，<br><b>柜子号 F 和 N 正中间</b>就是洗手间和饮水机。
+            </span>
+        </div>
+
+        <button class="action-submit-btn" onclick="completeStep(1, 2)">听完播客，去提交入职材料 <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+
+    <div class="step-content-card" id="card-step2">
+        <div class="card-title"><i class="fa-solid fa-arrow-up-from-bracket"></i> 模块二：职前服务平台操作指南</div>
+        
+        <div class="platform-redirect-box">
+            <span class="step-badge-indicator">官方核心小程序</span>
+            <i class="fa-solid fa-circle-check" style="color: #2ECC71;"></i>
+            <h4>请在【微信职前服务平台】小程序内完成</h4>
+            <p style="margin-top: 6px; text-align: left;">请退回到小程序界面，在官方系统内依序完成<b>【入职信息采集提交】</b>以及<b>【电子劳动合同签署】</b>两项法务步骤。请参考下方长图指南进行操作：</p>
+        </div>
+
+        <img class="embedded-guide-img" src="https://cropgif.net/images/1781141171194-e2fa34a6-1e2e-45ef-915e-81935b4629c8.png" alt="小程序操作指引">
+
+        <button class="action-submit-btn" onclick="completeStep(2, 3)">小程序步骤已做完，去下载云办公 <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+
+    <div class="step-content-card" id="card-step3">
+        <div class="card-title"><i class="fa-solid fa-download"></i> 模块三：云办公 APP 下载与安装指南</div>
+        
+        <div class="app-download-container">
+            <p style="font-size: 13px; color: var(--xdf-dark); font-weight: bold;">请扫描下方二维码下载新东方官方【云办公】App</p>
+            
+            <div class="app-qr-box">
+                <img src="https://cropgif.net/images/1781085398615-5b604bd8-8606-47d9-abf2-97c870e39271.png" alt="云办公App下载">
+            </div>
+
+            <div class="tips-list-box">
+                <h5><i class="fa-solid fa-triangle-exclamation" style="color: #E67E22;"></i> 老师们请注意（必看配置说明）：</h5>
+                <p>🍏 <b>IOS系统的老师</b>：在安装完成之后，需要进入手机的 <b>【设置】 -> 【通用】 -> 【VPN与设备管理】</b>，找到对应的企业证书并选择 <b>【信任该程序】</b>，重启手机后即可正常打开使用。</p>
+                <p>🤖 <b>安卓系统的老师</b>：如果遇到系统拦截导致无法正常安装，请临时 <b>【关闭手机设置中的“纯净/安全模式”】</b> 即可顺利安装。</p>
+                <p>📩 <b>关于登录账号</b>：您的登录账号密码会在您<b>签署完合同后的 20 分钟内</b>，通过系统短信发送给您。</p>
+                <p>📧 <b>账号格式规范</b>：登录账号的格式为：<strong>姓名全拼 + 数字后缀 + @xdf.cn</strong>（例如：<code>zhangsan2@xdf.cn</code>）。收到短信后，点击短信内的官方链接即可修改初始密码。</p>
+            </div>
+        </div>
+
+        <button class="action-submit-btn" style="background:#2ECC71; box-shadow:0 4px 15px rgba(46,204,113,0.3);" onclick="completeStep(3, 4)">APP已成功下载，去自取礼包 <i class="fa-solid fa-circle-check"></i></button>
+    </div>
+
+    <div class="step-content-card" id="card-step4">
+        <div class="card-title"><i class="fa-solid fa-gift"></i> 模块四：自助报到圆满通关</div>
+        
+        <div class="one-click-card-panel" style="background: linear-gradient(135deg, #00A0E9 0%, #007bb5 100%);">
+            <h4><i class="fa-brands fa-dingtalk"></i> 1. 向小助手享享发起测试提问</h4>
+            <p>成功登录云办公App后，请点击下方按钮直接唤醒钉钉，向AI小助手享享随机提问一个问题进行测试（例如：发送“第三代社保卡申领”）。</p>
+            <a class="inner-jump-btn" href="dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ" style="color: #00A0E9;">
+                <i class="fa-solid fa-paper-plane"></i> 一键进入钉钉享享对话框
+            </a>
+        </div>
+
+        <div class="one-click-card-panel">
+            <h4><i class="fa-solid fa-file-pen"></i> 2. 填写完成入职签到问卷</h4>
+            <p>提问互动完成后，请点击下方按钮直接进入入职问卷，完成本次报到签到。手续完成后，即可抱走茶几上的精美大礼包，并联系部门老师咨询后续安排！</p>
+            <a class="inner-jump-btn" href="https://form.wjx.com/vm/PnjcYyg.aspx#" target="_blank">
+                <i class="fa-solid fa-square-check"></i> 点击直接填写签到问卷
+            </a>
+        </div>
+        
+        <p style="text-align:center; font-size:11px; font-weight:bold; color:var(--text-muted); margin-top:10px;">
+            🎁 搞定上面两步后，就可以把大礼包和工牌开心抱走啦！
+        </p>
+
+        <button class="action-submit-btn" onclick="alert('恭喜加入新东方！祝您在这里开启一段精彩温暖的职场旅程！')">完成自助入职</button>
+    </div>
+
+    <div class="bottom-support-grid">
+        <div class="support-card" onclick="openModal('咨询HR小助手 - 享享', 'https://cropgif.net/images/1781084821182-830dbdeb-3d81-4b8c-b638-0d30a2f47a08.png')">
+            <i class="fa-solid fa-comment-sms"></i>
+            <strong>咨询HR小助手</strong>
+            <span style="font-size:10px; color:var(--text-muted); display:block; margin-top:2px;">添加享享咨询业务</span>
+        </div>
+        <div class="support-card" onclick="openModal('现场HR一对一极速解惑', 'https://cropgif.net/images/1781084740659-fea66a88-9c84-48ad-beae-2ee20871585a.jpg')">
+            <i class="fa-solid fa-headset"></i>
+            <strong>系统卡顿/呼叫HR</strong>
+            <span style="font-size:10px; color:var(--text-muted); display:block; margin-top:2px;">1分钟内闪现解惑</span>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-overlay" id="global-modal">
+    <div class="modal-body">
+        <div class="modal-close" onclick="closeModal()"><i class="fa-solid fa-circle-xmark"></i></div>
+        <h4 id="modal-title" style="color:var(--xdf-dark); font-size:16px;">微信扫码加入</h4>
+        <img class="modal-qr" id="modal-image" src="" alt="二维码加载中">
+        <p style="font-size:12px; color:var(--text-muted);">长按扫码或截屏至微信识别</p>
+    </div>
+</div>
+
+<script>
+    // 获取真实音频控制对象
+    const audio = document.getElementById('real-podcast-audio');
+    const playBtn = document.getElementById('audio-play-btn');
+    const progressFill = document.getElementById('audio-progress-fill');
+    const timeDisplay = document.getElementById('audio-time-display');
+    const speedIndicator = document.getElementById('speed-indicator');
+    const loopBtn = document.getElementById('loop-btn');
+
+    // 监听真实音频时间更新事件
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+            const percentage = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = percentage + '%';
+            timeDisplay.innerText = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+        }
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+        timeDisplay.innerText = '00:00 / ' + formatTime(audio.duration);
+    });
+
+    function toggleAudio() {
+        if (audio.paused) {
+            audio.play();
+            playBtn.innerHTML = '<i class="fa-solid fa-circle-pause" style="color:#E74C3C;"></i>';
+        } else {
+            audio.pause();
+            playBtn.innerHTML = '<i class="fa-solid fa-circle-play"></i>';
+        }
+    }
+
+    function changePlaybackSpeed() {
+        if (audio.playbackRate === 1.0) {
+            audio.playbackRate = 1.25;
+            speedIndicator.innerText = "1.25X 倍速";
+        } else if (audio.playbackRate === 1.25) {
+            audio.playbackRate = 1.5;
+            speedIndicator.innerText = "1.5X 倍速";
+        } else {
+            audio.playbackRate = 1.0;
+            speedIndicator.innerText = "1.0X 倍速";
+        }
+    }
+
+    function toggleLoop() {
+        audio.loop = !audio.loop;
+        loopBtn.style.color = audio.loop ? "var(--xdf-green)" : "var(--text-muted)";
+    }
+
+    function scrubAudio(event) {
+        const progressBarBg = document.getElementById('progress-bar-bg');
+        const rect = progressBarBg.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const width = rect.width;
+        const percentage = clickX / width;
+        if(audio.duration) {
+            audio.currentTime = percentage * audio.duration;
+        }
+    }
+
+    function formatTime(seconds) {
+        let min = Math.floor(seconds / 60);
+        let sec = Math.floor(seconds % 60);
+        if (min < 10) min = '0' + min;
+        if (sec < 10) sec = '0' + sec;
+        return min + ':' + sec;
+    }
+
+    function switchStep(stepNum) {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        document.querySelectorAll('.step-content-card').forEach(card => card.classList.remove('active'));
+        
+        document.getElementById('nav-step' + stepNum).classList.add('active');
+        document.getElementById('card-step' + stepNum).classList.add('active');
+
+        const title = document.getElementById('xiangxiang-title');
+        const text = document.getElementById('xiangxiang-text');
+        
+        if(stepNum === 1) {
+            title.innerText = "享享温馨提示：入职播客";
+            text.innerText = "欢迎入座！请戴上耳机，听听我为你准备的入职避坑播客。你的专属大礼包就在茶几上，听完音频后，请按步骤去微信职前服务平台完成办理。";
+        } else if(stepNum === 2) {
+            title.innerText = "享享温馨提示：材料提交指引";
+            text.innerText = "安全第一条！请退回到小程序首页，按照下方长图指南，完成【信息采集】和【合同签署】两个核心法务步骤。完成后再回这里哦。";
+        } else if(stepNum === 3) {
+            title.innerText = "享享温馨提示：云办公下载";
+            text.innerText = "请扫描本模块的二维码，按照您手机的系统类型（苹果/安卓）根据说明指导，安全下载并信任配置我们的云办公APP吧。";
+        } else if(stepNum === 4) {
+            title.innerText = "哇！恭喜你顺利通关！";
+            text.innerText = "最后一关！请一键前往钉钉跟我发起互动测试，紧接着点击链接完成入职登记问卷，今天所有的自助流程就全部打通啦！";
+        }
+    }
+
+    function completeStep(current, next) {
+        document.getElementById('nav-step' + current).classList.add('completed');
+        switchStep(next);
+    }
+
+    function copyWifi() {
+        navigator.clipboard.writeText('XDF');
+        alert('📱 Wi-Fi名称 [ XDF ] 已成功复制！');
+    }
+
+    function openModal(title, qrUrl) {
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-image').src = qrUrl;
+        document.getElementById('global-modal').classList.add('active');
+    }
+
+    document.getElementById('real-podcast-audio').addEventListener('ended', () => {
+        playBtn.innerHTML = '<i class="fa-solid fa-circle-play"></i>';
+    });
+
+    function closeModal() {
+        document.getElementById('global-modal').classList.remove('active');
+    }
+</script>
+</body>
+</html>

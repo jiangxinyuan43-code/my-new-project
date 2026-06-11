@@ -631,15 +631,15 @@
 
     <div class="header-banner">
         <div class="logo-placeholder"><i class="fa-solid fa-graduation-cap"></i> 新东方 NEW ORIENTAL</div>
-        <h1>你好，新同学！</h1>
-        <p>欢迎来到 3 层入职等待区，开启极速自助报到</p>
+        <h1>各位老师好！</h1>
+        <p>欢迎来到 3 层教师入职等待区，开启轻松自助报到</p>
     </div>
 
     <div class="xiangxiang-guide">
         <div class="avatar-box">🐏</div>
         <div class="guide-bubble">
             <strong id="xiangxiang-title">享享温馨提示：入职播客</strong>
-            <span id="xiangxiang-text">欢迎入座！请戴上耳机，听听我为你准备的入职避坑播客。你的专属大礼包就在茶几上，听完音频后，请按步骤去微信职前服务平台完成办理。</span>
+            <span id="xiangxiang-text">欢迎入座！请戴上耳机，收听为各位老师准备的入职指引播客。你的专属大礼包就在茶几上，听完音频后，请按步骤去微信职前服务平台完成办理。</span>
         </div>
     </div>
 
@@ -665,7 +665,7 @@
     </div>
 
     <div class="step-content-card active" id="card-step1">
-        <div class="card-title"><i class="fa-solid fa-circle-play"></i> 模块一：新同学专属避坑播客</div>
+        <div class="card-title"><i class="fa-solid fa-circle-play"></i> 模块一：教师入职指南播客</div>
         
         <div class="wifi-action-card" style="margin-bottom: 12px; padding: 10px 14px;">
             <div style="font-size:13px; color:var(--xdf-dark); font-weight:bold;">
@@ -732,7 +732,7 @@
             </div>
 
             <div class="tips-list-box">
-                <h5><i class="fa-solid fa-triangle-exclamation" style="color: #E67E22;"></i> 老师们请注意（必看配置说明）：</h5>
+                <h5><i class="fa-solid fa-triangle-exclamation" style="color: #E67E22;"></i> 请各位老师注意（必看配置说明）：</h5>
                 <p>🍏 <b>IOS系统的老师</b>：在安装完成之后，需要进入手机的 <b>【设置】 -> 【通用】 -> 【VPN与设备管理】</b>，找到对应的企业证书并选择 <b>【信任该程序】</b>，重启手机后即可正常打开使用。</p>
                 <p>🤖 <b>安卓系统的老师</b>：如果遇到系统拦截导致无法正常安装，请临时 <b>【关闭手机设置中的“纯净/安全模式”】</b> 即可顺利安装。</p>
                 <p>📩 <b>关于登录账号</b>：您的登录账号密码会在您<b>签署完合同后的 20 分钟内</b>，通过系统短信发送给您。</p>
@@ -765,10 +765,10 @@
         </div>
         
         <p style="text-align:center; font-size:11px; font-weight:bold; color:var(--text-muted); margin-top:10px;">
-            🎁 搞定上面两步后，就可以把大礼包和工牌开心抱走啦！
+            🎁 完成以上步骤后，即可领取您的工牌与入职礼包。
         </p>
 
-        <button class="action-submit-btn" onclick="alert('恭喜加入新东方！祝您在这里开启一段精彩温暖的职场旅程！')">完成自助入职</button>
+        <button class="action-submit-btn" onclick="alert('恭喜加入新东方！祝各位老师在新东方开启一段温暖而精彩的职业旅程！')">完成自助入职</button>
     </div>
 
     <div class="bottom-support-grid">
@@ -898,7 +898,7 @@
         
         if(stepNum === 1) {
             title.innerText = "享享温馨提示：入职播客";
-            text.innerText = "欢迎入座！请戴上耳机，听听我为你准备的入职避坑播客。你的专属大礼包就在茶几上，听完音频后，请按步骤去微信职前服务平台完成办理。";
+            text.innerText = "欢迎入座！请戴上耳机，收听为各位老师准备的入职指引播客。你的专属大礼包就在茶几上，听完音频后，请按步骤去微信职前服务平台完成办理。";
         } else if(stepNum === 2) {
             title.innerText = "享享温馨提示：材料提交指引";
             text.innerText = "安全第一条！请退回到小程序首页，按照下方长图指南，完成【信息采集】和【合同签署】两个核心法务步骤。完成后再回这里哦。";
@@ -906,8 +906,8 @@
             title.innerText = "享享温馨提示：云办公下载";
             text.innerText = "请扫描本模块的二维码，按照您手机的系统类型（苹果/安卓）根据说明指导，安全下载并信任配置我们的云办公APP吧。";
         } else if(stepNum === 4) {
-            title.innerText = "哇！恭喜你顺利通关！";
-            text.innerText = "最后一关！请一键前往钉钉跟我发起互动测试，紧接着点击链接完成入职登记问卷，今天所有的自助流程就全部打通啦！";
+            title.innerText = "恭喜各位老师完成全部流程！";
+            text.innerText = "最后一关！请一键前往钉钉跟我发起互动测试，紧接着点击链接完成入职登记问卷，今天的自助入职流程就全部完成啦！";
         }
     }
 

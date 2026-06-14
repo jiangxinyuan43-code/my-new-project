@@ -50,7 +50,7 @@
             padding-bottom: 80px;
         }
 
-        /* 🚀 亮点 1：常驻顶部的“虚拟陪伴”状态看板 */
+        /* 常驻顶部的“虚拟陪伴”状态看板 */
         .status-companion-bar {
             background: #E6F4FA;
             border-bottom: 1px solid rgba(0, 160, 233, 0.15);
@@ -86,7 +86,7 @@
             font-size: 11px;
         }
 
-        /* 2. 迎新头部 */
+        /* 迎新头部 */
         .header-banner {
             background: var(--xdf-primary-gradient);
             color: #ffffff;
@@ -135,6 +135,7 @@
             box-shadow: var(--shadow-sm);
         }
 
+        /* 💡 改动 1：使用用户提供的图片 URL 完美替换享享头像 */
         .avatar-box {
             width: 44px;
             height: 44px;
@@ -143,9 +144,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
             border: 2px solid var(--xdf-primary);
             flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .guide-bubble {
@@ -160,7 +167,7 @@
             font-size: 14.5px;
         }
 
-        /* 3. 分步平滑横轴导航 */
+        /* 分步平滑横轴导航 */
         .flow-nav {
             padding: 0 24px;
             margin-bottom: 20px;
@@ -248,7 +255,7 @@
             color: var(--xdf-primary);
         }
 
-        /* 🚀 亮点 2：系统前置一键落座签到卡片 */
+        /* 一键确认落座签到卡片 */
         .checkin-action-box {
             background: #FFF9E6;
             border: 1px solid #FFEAA7;
@@ -282,13 +289,31 @@
             cursor: default;
         }
 
-        /* 🚀 亮点 3：虚拟专属会议室视频流控制组件 */
-        .video-player-container {
-            background: var(--xdf-dark);
+        /* 💡 改动 2：多媒体流控制组件样式重构（视频与播客拆分） */
+        .media-section-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--xdf-dark);
+            margin: 14px 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .media-container {
             border-radius: var(--radius-md);
             padding: 10px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             box-shadow: var(--shadow-sm);
+        }
+
+        .video-theme-bg {
+            background: var(--xdf-dark);
+        }
+
+        .podcast-theme-bg {
+            background: #EDF4F9;
+            border: 1px solid #D4E6F1;
         }
 
         .video-wrapper {
@@ -305,29 +330,50 @@
             object-fit: contain;
         }
 
-        .custom-video-controls {
+        /* 专属高级播客控制条 */
+        .podcast-player-box {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: rgba(255, 255, 255, 0.08);
-            margin-top: 8px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            color: white;
-            font-size: 12px;
+            gap: 12px;
+            padding: 6px 4px;
         }
 
-        .video-control-btn {
-            background: none;
+        .podcast-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--xdf-primary-gradient);
+            color: white;
             border: none;
-            color: white;
-            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
             cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 160, 233, 0.2);
         }
 
-        .video-control-btn.play-toggle {
-            color: var(--xdf-primary);
-            font-size: 20px;
+        .podcast-info {
+            flex: 1;
+        }
+
+        .podcast-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #5D6D7E;
+            margin-top: 4px;
+        }
+
+        .podcast-speed-btn {
+            background: white;
+            border: 1px solid #BDC3C7;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: var(--xdf-dark);
+            font-weight: bold;
+            cursor: pointer;
         }
 
         /* Wi-Fi组件 */
@@ -417,7 +463,7 @@
             gap: 6px;
         }
 
-        /* 🚀 亮点 4：20分钟等待期缓冲任务卡片 */
+        /* 20分钟等待期缓冲任务卡片 */
         .waiting-buffer-card {
             background: #FFF9E6;
             border: 1px solid #FFEAA7;
@@ -464,11 +510,6 @@
             margin-bottom: 16px;
         }
 
-        .one-click-card-panel.success-style {
-            background: var(--xdf-success-gradient);
-            box-shadow: 0 10px 25px rgba(56,239,125,0.18);
-        }
-
         .one-click-card-panel h4 {
             font-size: 15px;
             font-weight: 800;
@@ -503,11 +544,7 @@
             cursor: pointer;
         }
 
-        .one-click-card-panel.success-style .inner-jump-btn {
-            color: #11998e;
-        }
-
-        /* 🚀 亮点 5：零社交摩擦——半自动化填空式文字提问面板 */
+        /* 低社交摩擦——半自动化填空式文字提问面板 */
         .bottom-support-bar {
             background: #ffffff;
             border-top: 1px solid #EEEEEE;
@@ -582,7 +619,37 @@
             pointer-events: auto;
         }
 
-        /* 动画库 */
+        /* 全局弹窗蒙层样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .modal-body {
+            background: white;
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            position: relative;
+            width: 85%;
+            max-width: 340px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            animation: scaleUp 0.3s cubic-bezier(0.1, 1, 0.1, 1);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleUp { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.1); opacity: 0.8; }
@@ -592,7 +659,7 @@
 </head>
 <body>
 
-<!-- 🚀 系统级主动纠偏温馨兜底提示（当老师停留在某步超20分钟无操作时触发） -->
+<!-- 系统级主动纠偏温馨兜底提示 -->
 <div class="timeout-toast-helper" id="help-toast">
     <i class="fa-solid fa-bell" style="color: #F1C40F; font-size: 16px; margin-top:2px;"></i>
     <div style="flex:1;">
@@ -604,16 +671,16 @@
 
 <div class="phone-container">
 
-    <!-- 🚀 亮点 1：常驻虚拟陪伴条 -->
+    <!-- 常驻虚拟陪伴条 -->
     <div class="status-companion-bar">
         <div class="status-left">
             <i class="fa-solid fa-id-badge"></i>
-            <span id="companion-text">✨ 虚拟接待员小象正在陪伴您...</span>
+            <span id="companion-text">✨ 虚拟接待员享享正在陪伴您...</span>
         </div>
         <div class="status-right" id="companion-progress-badge">进度: 1/4</div>
     </div>
 
-    <!-- 2. 迎新头部 -->
+    <!-- 迎新头部 -->
     <div class="header-banner">
         <div class="logo-placeholder"><i class="fa-solid fa-graduation-cap"></i> 新东方 NEW ORIENTAL</div>
         <h1>您好，新东方老师！</h1>
@@ -622,14 +689,17 @@
 
     <!-- 智能享享向导提示 -->
     <div class="xiangxiang-guide">
-        <div class="avatar-box">🐘</div>
+        <!-- 💡 改动 1：使用用户提供的 CDN 链接渲染官方“享享”小象高清头像 -->
+        <div class="avatar-box" id="xiangxiang-avatar-slot">
+            <img src="https://cdn.phototourl.com/free/2026-06-14-cd5dbe26-c3b0-422f-97a2-78df39e506fe.png" alt="享享">
+        </div>
         <div class="guide-bubble">
-            <strong id="xiangxiang-title">接待员小象：入职第一课</strong>
-            <span id="xiangxiang-text">欢迎各位老师入座！沙发区环境舒适安静，请您先点击下方的“一键确认落座办理”，告知系统您的到来。随后可单耳戴上耳机，在您的手机屏幕里观看专门为您准备的5分钟视频宣讲。</span>
+            <strong id="xiangxiang-title">接待员享享：入职第一课</strong>
+            <span id="xiangxiang-text">欢迎各位老师入座！沙发区环境舒适安静，请您先点击下方的“一键确认落座办理”，告知系统您的到来。随后可戴上耳机，在下方观看宣讲视频或收听专属入职播客。</span>
         </div>
     </div>
 
-    <!-- 3. 顶级分布导航条 -->
+    <!-- 顶级分布导航条 -->
     <div class="flow-nav">
         <div class="nav-grid">
             <div class="nav-item active" id="nav-step1" onclick="switchStep(1)">
@@ -653,12 +723,12 @@
 
     <!-- ================= 模块一：入职第一课 ================= -->
     <div class="step-content-card active" id="card-step1">
-        <div class="card-title"><i class="fa-solid fa-video"></i> 模块一：沙发区专属“入职第一课”</div>
+        <div class="card-title"><i class="fa-solid fa-compact-disc"></i> 模块一：沙发区专属“入职第一课”</div>
         
-        <!-- 🚀 亮点 2：一键确认落座签到（作为系统前置信号，打通HR监控） -->
+        <!-- 一键确认落座签到（作为系统前置信号，打通HR监控） -->
         <div class="checkin-action-box">
             <p style="font-size:12.5px; color:var(--xdf-dark); margin-bottom:10px; text-align:left; line-height:1.4;">
-                💡 <b>请先完成落座签到：</b>系统后台将实时感知您的就座，20分钟防遗忘守护将自动为老师启动。
+                💡 <b>请先完成落座签到：</b>系统后台将实时感知您的就座并开启一键确认报到，20分钟防遗忘守护将自动为老师启动。
             </p>
             <button class="checkin-btn" id="checkin-button" onclick="doCheckin()">
                 <i class="fa-solid fa-location-dot"></i> 一键确认落座办理（前置签到）
@@ -672,16 +742,38 @@
             <button class="copy-badge-btn" onclick="copyWifi()">复制网名</button>
         </div>
 
-        <!-- 🚀 亮点 3：虚拟专属会议室视频流组件 -->
-        <div class="video-player-container">
+        <!-- 💡 改动 2：将原多媒体组件彻底拆分为独立的【视频区】与【播客音频区】 -->
+        
+        <!-- 视频专属部分 -->
+        <div class="media-section-title">
+            <i class="fa-solid fa-video" style="color:var(--xdf-primary)"></i> 选项 A：看高能版视频宣讲（独立留出槽位）
+        </div>
+        <div class="media-container video-theme-bg">
             <div class="video-wrapper">
-                <!-- 预载真实音频文件作为流，配有原生字幕支持与控制 -->
-                <video id="real-video-player" src="https://cropgif.net/audio/1780969327343-d1a52b8f-4390-4864-8d7f-0de83bb3e3f8.mp3" poster="https://cropgif.net/images/1781141171194-e2fa34a6-1e2e-45ef-915e-81935b4629c8.png" preload="metadata"></video>
+                <!-- 为后续上传的视频文件留空，当前使用默认纯净封面占位 -->
+                <video id="real-video-player" src="" poster="https://cropgif.net/images/1781141171194-e2fa34a6-1e2e-45ef-915e-81935b4629c8.png" controls preload="none"></video>
             </div>
-            <div class="custom-video-controls">
-                <button class="video-control-btn play-toggle" id="v-play-btn" onclick="toggleVideo()"><i class="fa-solid fa-circle-play"></i></button>
-                <span id="v-time-display">00:00 / 00:00</span>
-                <span style="background:rgba(255,255,255,0.2); padding:2px 6px; border-radius:4px; cursor:pointer;" onclick="changeVideoSpeed()" id="v-speed-btn">1.0X</span>
+            <p style="color:rgba(255,255,255,0.7); font-size:11px; text-align:center; margin-top:6px;">🎬 视频模块已就绪，后续上传真实MP4视频链接后即可直接播放</p>
+        </div>
+
+        <!-- 播客音频专属部分 -->
+        <div class="media-section-title">
+            <i class="fa-solid fa-podcast" style="color:#E74C3C"></i> 选项 B：听轻松版入职播客（音频专属控制组件）
+        </div>
+        <div class="media-container podcast-theme-bg">
+            <audio id="real-audio-player" src="https://cropgif.net/audio/1780969327343-d1a52b8f-4390-4864-8d7f-0de83bb3e3f8.mp3" preload="metadata"></audio>
+            
+            <div class="podcast-player-box">
+                <button class="podcast-btn" id="p-play-btn" onclick="toggleAudio()">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <div class="podcast-info">
+                    <div style="font-size:12.5px; font-weight:bold; color:var(--xdf-dark)">新东方新员工入职宣讲音频版</div>
+                    <div class="podcast-meta">
+                        <span id="p-time-display">00:00 / 00:00</span>
+                        <button class="podcast-speed-btn" onclick="changeAudioSpeed()" id="p-speed-btn">1.0X</button>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -691,7 +783,6 @@
             </span>
         </div>
 
-        <!-- 限制：签到完才可点击 -->
         <button class="action-submit-btn" id="step1-next-btn" disabled onclick="completeStep(1, 2)">请先点击上方按钮完成落座签到</button>
     </div>
 
@@ -726,7 +817,7 @@
                 <p style="border-top:1px dashed #DDD; padding-top:5px;">🤖 <b>安卓系统</b>：若遇安装包拦截，请临时 <b>【关闭手机设置中的“纯净模式/安全守护”】</b> 即可装载。</p>
             </div>
 
-            <!-- 🚀 亮点 4：20分钟等待期缓冲任务卡片 -->
+            <!-- 20分钟等待期缓冲任务卡片 -->
             <div class="waiting-buffer-card">
                 <i class="fa-solid fa-clock-rotate-left" style="color: #F39C12; font-size: 16px; margin-top:2px;"></i>
                 <div style="text-align:left; font-size:12px; color:#7F6000; line-height:1.6;">
@@ -755,19 +846,15 @@
             </a>
         </div>
 
-        <!-- 问卷星签到 -->
-        <div class="one-click-card-panel success-style">
-            <h4><i class="fa-solid fa-square-poll-horizontal"></i> 2. 填写到场确认问卷</h4>
-            <p>测试完成后，请点击下方按钮无缝打开问卷星完成最后的一键确认，今天的自助流程即可圆满关闭！</p>
-            <a class="inner-jump-btn" href="https://form.wjx.com/vm/PnjcYyg.aspx#" target="_blank">
-                <i class="fa-solid fa-check-double"></i> 点击直接填写签到问卷
-            </a>
+        <div style="border: 1px solid #D4EDDA; background: #E2F0D9; padding: 16px; border-radius: var(--radius-md); text-align: left; font-size: 12.5px; color: #385723; margin-bottom: 16px; line-height: 1.5;">
+            <i class="fa-solid fa-circle-check" style="color:#2ECC71;"></i> <b>到场确认状态：已于第一步自动激活完毕。</b><br>
+            得益于流程精简优化，老师无需重复进行问卷星登记录入。当您完成上方的钉钉测试后，即可直接点击下方按钮完成今日完美的无感报到！
         </div>
         
         <button class="action-submit-btn" style="background:var(--xdf-success);" onclick="finishAll()">圆满完成自助入职</button>
     </div>
 
-    <!-- 🚀 亮点 5：零社交摩擦——半自动化填空式文字咨询面板 -->
+    <!-- 零社交摩擦——半自动化填空式文字咨询面板 -->
     <div class="bottom-support-bar">
         <div class="text-consult-panel">
             <div class="text-consult-title">
@@ -776,7 +863,6 @@
             <div class="prefilled-textarea-mock">
                 “您好！我是今天入职的老师，目前正在 <b>3层沙发区</b> 自助办理。我想问一下：<span>（在此处输入老师您遇到的疑问）</span> ”
             </div>
-            <!-- 一键唤起钉钉现场HR的文字会话窗口，并自动利用协议在输入框中预填上述标准话术 -->
             <a href="dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ" class="inner-jump-btn" style="background:var(--xdf-primary); color:white; font-size:12px; padding:8px;">
                 <i class="fa-solid fa-comment-dots"></i> 一键拉起文字对话窗口（免开口）
             </a>
@@ -791,13 +877,13 @@
 
 </div>
 
-<!-- 弹窗组件 -->
-<div class="modal-overlay" id="global-modal">
-    <div class="modal-body" style="background:white; padding:24px; border-radius:var(--radius-lg); text-align:center; position:relative; width:80%; max-width:320px; box-shadow:0 10px 25px rgba(0,0,0,0.15);">
-        <div style="position:absolute; right:12px; top:12px; font-size:20px; color:var(--text-muted); cursor:pointer;" onclick="closeModal()"><i class="fa-solid fa-circle-xmark"></i></div>
-        <h4 id="modal-title" style="color:var(--xdf-dark); font-size:14px; margin-bottom:10px;">扫码加入</h4>
-        <img id="modal-image" src="" alt="二维码" style="width:100%; max-height:180px; object-fit:contain; border:1px solid #EEE; border-radius:8px; margin-bottom:10px;">
-        <p style="font-size:11px; color:var(--text-muted);">长按或扫码识别联系现场老师</p>
+<!-- 全局弹窗（使用 fixed + flex 完美居中覆盖） -->
+<div class="modal-overlay" id="global-modal" onclick="if(event.target===this) closeModal()">
+    <div class="modal-body">
+        <div style="position:absolute; right:14px; top:14px; font-size:22px; color:var(--text-muted); cursor:pointer;" onclick="closeModal()"><i class="fa-solid fa-circle-xmark"></i></div>
+        <h4 id="modal-title" style="color:var(--xdf-dark); font-size:14.5px; margin-bottom:12px; font-weight:bold;">查看面板</h4>
+        <img id="modal-image" src="" alt="二维码" style="width:100%; max-height:220px; object-fit:contain; border:1px solid #EEE; border-radius:8px; margin-bottom:12px; background:#FFF;">
+        <p style="font-size:11px; color:var(--text-muted);">提示：长按图片或扫码可进行下一步查看</p>
     </div>
 </div>
 
@@ -806,37 +892,33 @@
     let currentStep = 1;
     let isCheckedIn = false;
     let inactivityTimer = null;
-    const INACTIVITY_LIMIT_MS = 20 * 60 * 1000; // 🚀 20分钟防遗忘兜底时间阀值
+    const INACTIVITY_LIMIT_MS = 20 * 60 * 1000; 
     let toastShownForStep = { 1: false, 2: false, 3: false, 4: false };
 
-    const video = document.getElementById('real-video-player');
-    const vPlayBtn = document.getElementById('v-play-btn');
-    const vTimeDisplay = document.getElementById('v-time-display');
-    const vSpeedBtn = document.getElementById('v-speed-btn');
+    const audio = document.getElementById('real-audio-player');
+    const pPlayBtn = document.getElementById('p-play-btn');
+    const pTimeDisplay = document.getElementById('p-time-display');
+    const pSpeedBtn = document.getElementById('p-speed-btn');
 
-    // ===== 🚀 亮点 2：一键确认落座签到（作为系统前置信号） =====
+    // 一键确认落座签到
     function doCheckin() {
         isCheckedIn = true;
         const checkinUrl = 'https://form.wjx.com/vm/PnjcYyg.aspx#';
         
-        // 新建标签页打开真实问卷星，建立第一层数据备份
         window.open(checkinUrl, '_blank');
 
-        // 修改UI状态为已激活
         const btn = document.getElementById('checkin-button');
         btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> 签到成功！后台已感知您的落座';
         btn.classList.add('done');
 
-        // 释放下一步限制
         const nextBtn = document.getElementById('step1-next-btn');
         nextBtn.disabled = false;
         nextBtn.innerHTML = '已确认落座，开始入职第一课 <i class="fa-solid fa-arrow-right"></i>';
 
-        // 启动系统级 20 分钟倒计时防断联、防流失守护逻辑
         resetInactivityTimer();
     }
 
-    // ===== 🚀 亮点 1：全局陪伴状态条随步骤平滑更新 =====
+    // 全局陪伴状态条随步骤平滑更新
     function updateCompanionStatus(stepNum) {
         const barText = document.getElementById('companion-text');
         const badge = document.getElementById('companion-progress-badge');
@@ -845,7 +927,7 @@
         
         switch(stepNum) {
             case 1:
-                barText.innerText = "✨ 接待员小象正在陪伴您看宣讲视频...";
+                barText.innerText = "✨ 虚拟接待员享享正在陪伴您了解多媒体指南...";
                 break;
             case 2:
                 barText.innerText = "📝 老师，正在微信平台采集信息及合同签署...";
@@ -859,9 +941,8 @@
         }
     }
 
-    // ===== 步骤平滑切换逻辑 =====
+    // 步骤平滑切换逻辑
     function switchStep(stepNum) {
-        // 如果第一步还没签到，强行拦截禁止跳跃
         if (stepNum > 1 && !isCheckedIn) {
             alert('为了保障现场HR能及时收到您的落座信号，请老师先点击模块一的【一键确认落座办理】完成前置签到。');
             return;
@@ -875,10 +956,7 @@
         document.getElementById('nav-step' + stepNum).classList.add('active');
         document.getElementById('card-step' + stepNum).classList.add('active');
 
-        // 更新状态陪伴条
         updateCompanionStatus(stepNum);
-
-        // 重置后台无操作守护倒计时
         resetInactivityTimer();
         document.getElementById('help-toast').classList.remove('show');
 
@@ -887,17 +965,17 @@
         const text = document.getElementById('xiangxiang-text');
         
         if(stepNum === 1) {
-            title.innerText = "接待员小象：入职第一课";
-            text.innerText = "欢迎各位老师入座！沙发区环境舒适安静，请您先点击下方的“一键确认落座办理”，告知系统您的到来。随后可单耳戴上耳机，在您的手机屏幕里观看专门为您准备的5分钟视频宣讲。";
+            title.innerText = "接待员享享：入职第一课";
+            text.innerText = "欢迎各位老师入座！沙发区环境舒适安静，请您先点击下方的“一键确认落座办理”，告知系统您的到来。随后可戴上耳机，在下方观看宣讲视频或收听专属入职播客。";
         } else if(stepNum === 2) {
-            title.innerText = "接待员小象：材料提交指引";
+            title.innerText = "接待员享享：材料提交指引";
             text.innerText = "老师，请暂时退回到微信小程序的首页，对照下方的长图指南完成【信息采集】与【劳动合同签署】。这两步属于法定合规步骤，务必认真核对姓名与证件号。";
         } else if(stepNum === 3) {
-            title.innerText = "接待员小象：云办公下载与配置";
+            title.innerText = "接待员享享：云办公下载与配置";
             text.innerText = "请扫描本模块的二维码，按照您手机的系统类型（苹果/安卓）根据说明指导，安全下载并信任配置我们的云办公APP吧。";
         } else if(stepNum === 4) {
             title.innerText = "哇！恭喜老师圆满通关！";
-            text.innerText = "最后一关！请一键前往钉钉跟我发起互动测试，紧接着点击链接完成入职登记问卷，今天所有的自助流程就全部打通啦！";
+            text.innerText = "最后一关！请一键前往钉钉跟我发起互动测试，此时您在第一步的签到已与后台完美联通，无需再重复录入问卷，测试通过即可圆满通关啦！";
         }
     }
 
@@ -906,33 +984,33 @@
         switchStep(next);
     }
 
-    // ===== 🚀 亮点 3：专属会议室多媒体流控制逻辑 =====
-    function toggleVideo() {
-        if (video.paused) {
-            video.play();
-            vPlayBtn.innerHTML = '<i class="fa-solid fa-circle-pause" style="color:#E74C3C;"></i>';
+    // 💡 改动 2：多媒体流控制逻辑更新（音频/播客模块专属 JS 控制）
+    function toggleAudio() {
+        if (audio.paused) {
+            audio.play();
+            pPlayBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
         } else {
-            video.pause();
-            vPlayBtn.innerHTML = '<i class="fa-solid fa-circle-play"></i>';
+            audio.pause();
+            pPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
         }
     }
 
-    video.addEventListener('timeupdate', () => {
-        if (video.duration) {
-            vTimeDisplay.innerText = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+            pTimeDisplay.innerText = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
         }
     });
 
-    function changeVideoSpeed() {
-        if (video.playbackRate === 1.0) {
-            video.playbackRate = 1.25;
-            vSpeedBtn.innerText = "1.25X";
-        } else if (video.playbackRate === 1.25) {
-            video.playbackRate = 1.5;
-            vSpeedBtn.innerText = "1.5X";
+    function changeAudioSpeed() {
+        if (audio.playbackRate === 1.0) {
+            audio.playbackRate = 1.25;
+            pSpeedBtn.innerText = "1.25X";
+        } else if (audio.playbackRate === 1.25) {
+            audio.playbackRate = 1.5;
+            pSpeedBtn.innerText = "1.5X";
         } else {
-            video.playbackRate = 1.0;
-            vSpeedBtn.innerText = "1.0X";
+            audio.playbackRate = 1.0;
+            pSpeedBtn.innerText = "1.0X";
         }
     }
 
@@ -942,7 +1020,7 @@
         return (min < 10 ? '0' : '') + min + ':' + (sec < 10 ? '0' : '') + sec;
     }
 
-    // ===== 🚀 亮点 4：系统防流失超时主动求助提示组件 =====
+    // 系统防流失超时主动求助提示组件
     function resetInactivityTimer() {
         clearInactivityTimer();
         if (!isCheckedIn || toastShownForStep[currentStep]) return; 
@@ -960,7 +1038,6 @@
         }
     }
 
-    // 监听各类滑动点击，重置20分钟计算器
     document.addEventListener('click', resetInactivityTimer);
     document.addEventListener('touchstart', resetInactivityTimer);
 
@@ -984,8 +1061,8 @@
         document.getElementById('global-modal').style.display = 'none';
     }
 
-    video.addEventListener('ended', () => {
-        vPlayBtn.innerHTML = '<i class="fa-solid fa-circle-play"></i>';
+    audio.addEventListener('ended', () => {
+        pPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     });
 </script>
 </body>

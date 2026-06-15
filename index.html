@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>欢迎新老师 - 新东方沙发区自助入职系统</title>
-    <!-- 引入稳定高颜值图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -647,6 +646,19 @@
             animation: scaleUp 0.3s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
+        /* 针对微信限制定制的说明样式 */
+        .wechat-notice-box {
+            text-align: left;
+            background: #F2F4F4;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #566573;
+            margin-top: 10px;
+            line-height: 1.5;
+            border-left: 4px solid #2ECC71;
+        }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes scaleUp { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
@@ -659,7 +671,6 @@
 </head>
 <body>
 
-<!-- 系统级主动纠偏温馨兜底提示 -->
 <div class="timeout-toast-helper" id="help-toast">
     <i class="fa-solid fa-bell" style="color: #F1C40F; font-size: 16px; margin-top:2px;"></i>
     <div style="flex:1;">
@@ -671,7 +682,6 @@
 
 <div class="phone-container">
 
-    <!-- 常驻虚拟陪伴条 -->
     <div class="status-companion-bar">
         <div class="status-left">
             <i class="fa-solid fa-id-badge"></i>
@@ -680,16 +690,13 @@
         <div class="status-right" id="companion-progress-badge">进度: 1/4</div>
     </div>
 
-    <!-- 迎新头部 -->
     <div class="header-banner">
         <div class="logo-placeholder"><i class="fa-solid fa-graduation-cap"></i> 新东方 NEW ORIENTAL</div>
         <h1>您好，新东方老师！</h1>
         <p>欢迎来到 3 层入职沙发区，专属虚拟接待已为您开启</p>
     </div>
 
-    <!-- 智能享享向导提示 -->
     <div class="xiangxiang-guide">
-        <!-- 💡 改动 1：使用用户提供的 CDN 链接渲染官方“享享”小象高清头像 -->
         <div class="avatar-box" id="xiangxiang-avatar-slot">
             <img src="https://cdn.phototourl.com/free/2026-06-14-cd5dbe26-c3b0-422f-97a2-78df39e506fe.png" alt="享享">
         </div>
@@ -699,7 +706,6 @@
         </div>
     </div>
 
-    <!-- 顶级分布导航条 -->
     <div class="flow-nav">
         <div class="nav-grid">
             <div class="nav-item active" id="nav-step1" onclick="switchStep(1)">
@@ -721,11 +727,9 @@
         </div>
     </div>
 
-    <!-- ================= 模块一：入职第一课 ================= -->
     <div class="step-content-card active" id="card-step1">
         <div class="card-title"><i class="fa-solid fa-compact-disc"></i> 模块一：沙发区专属“入职第一课”</div>
         
-        <!-- 一键确认落座签到（作为系统前置信号，打通HR监控） -->
         <div class="checkin-action-box">
             <p style="font-size:12.5px; color:var(--xdf-dark); margin-bottom:10px; text-align:left; line-height:1.4;">
                 💡 <b>请先完成落座签到：</b>系统后台将实时感知您的就座并开启一键确认报到，20分钟防遗忘守护将自动为老师启动。
@@ -742,21 +746,16 @@
             <button class="copy-badge-btn" onclick="copyWifi()">复制网名</button>
         </div>
 
-        <!-- 💡 改动 2：将原多媒体组件彻底拆分为独立的【视频区】与【播客音频区】 -->
-        
-        <!-- 视频专属部分 -->
         <div class="media-section-title">
             <i class="fa-solid fa-video" style="color:var(--xdf-primary)"></i> 选项 A：看高能版视频宣讲（独立留出槽位）
         </div>
         <div class="media-container video-theme-bg">
             <div class="video-wrapper">
-                <!-- 为后续上传的视频文件留空，当前使用默认纯净封面占位 -->
                 <video id="real-video-player" src="" poster="https://cropgif.net/images/1781141171194-e2fa34a6-1e2e-45ef-915e-81935b4629c8.png" controls preload="none"></video>
             </div>
             <p style="color:rgba(255,255,255,0.7); font-size:11px; text-align:center; margin-top:6px;">🎬 视频模块已就绪，后续上传真实MP4视频链接后即可直接播放</p>
         </div>
 
-        <!-- 播客音频专属部分 -->
         <div class="media-section-title">
             <i class="fa-solid fa-podcast" style="color:#E74C3C"></i> 选项 B：听轻松版入职播客（音频专属控制组件）
         </div>
@@ -786,7 +785,6 @@
         <button class="action-submit-btn" id="step1-next-btn" disabled onclick="completeStep(1, 2)">请先点击上方按钮完成落座签到</button>
     </div>
 
-    <!-- ================= 模块二：材料提交 ================= -->
     <div class="step-content-card" id="card-step2">
         <div class="card-title"><i class="fa-solid fa-id-card"></i> 模块二：职前服务平台操作指南</div>
         
@@ -801,7 +799,6 @@
         <button class="action-submit-btn" onclick="completeStep(2, 3)">两项步骤已在微信完成，去下载云办公 <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- ================= 模块三：云办公下载 ================= -->
     <div class="step-content-card" id="card-step3">
         <div class="card-title"><i class="fa-solid fa-download"></i> 模块三：云办公 APP 下载与避坑配置</div>
         
@@ -817,7 +814,6 @@
                 <p style="border-top:1px dashed #DDD; padding-top:5px;">🤖 <b>安卓系统</b>：若遇安装包拦截，请临时 <b>【关闭手机设置中的“纯净模式/安全守护”】</b> 即可装载。</p>
             </div>
 
-            <!-- 20分钟等待期缓冲任务卡片 -->
             <div class="waiting-buffer-card">
                 <i class="fa-solid fa-clock-rotate-left" style="color: #F39C12; font-size: 16px; margin-top:2px;"></i>
                 <div style="text-align:left; font-size:12px; color:#7F6000; line-height:1.6;">
@@ -825,7 +821,7 @@
                     账号密码通常在签署合同后 <b>20分钟内</b> 通过短信下发。在等待密码期间，老师们可以先进行如下探索：<br>
                     1. 抱走身旁茶几上的<b>新东方专属大礼包</b>与<b>工牌套</b>；<br>
                     2. 去西侧玻璃门倒杯温水、熟悉周边路线。<br>
-                    收到账号（格式如 <code>wangwu5@xdf.cn</code>）并首次修改密码登录后，请点击下一步。
+                    收到账号（格式如 <code>wangwu5@xdf.cn</code>）并首次修改密码登录后，请点击下一步.
                 </div>
             </div>
         </div>
@@ -833,17 +829,15 @@
         <button class="action-submit-btn" onclick="completeStep(3, 4)">已登录云办公，去进行通关测试 <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- ================= 模块四：圆满通关 ================= -->
     <div class="step-content-card" id="card-step4">
         <div class="card-title"><i class="fa-solid fa-flag-checkered"></i> 模块四：自助报到圆满通关</div>
         
-        <!-- 一键触发钉钉（免拦截直达） -->
         <div class="one-click-card-panel">
             <h4><i class="fa-brands fa-dingtalk"></i> 1. 向 AI 助手享享发起互动测试</h4>
             <p>由于您目前已在钉钉环境或系统浏览器中，点击下方按钮将直接为您唤醒钉钉客户端，向“HR小助手”发送任意关键词（如发送“俱乐部”）进行智能应答测试。</p>
-            <a class="inner-jump-btn" href="dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ">
+            <button class="inner-jump-btn" onclick="handleDingtalkJump('dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ', '互动测试')">
                 <i class="fa-solid fa-paper-plane"></i> 一键无缝进入钉钉享享对话框
-            </a>
+            </button>
         </div>
 
         <div style="border: 1px solid #D4EDDA; background: #E2F0D9; padding: 16px; border-radius: var(--radius-md); text-align: left; font-size: 12.5px; color: #385723; margin-bottom: 16px; line-height: 1.5;">
@@ -854,7 +848,6 @@
         <button class="action-submit-btn" style="background:var(--xdf-success);" onclick="finishAll()">圆满完成自助入职</button>
     </div>
 
-    <!-- 零社交摩擦——半自动化填空式文字咨询面板 -->
     <div class="bottom-support-bar">
         <div class="text-consult-panel">
             <div class="text-consult-title">
@@ -863,12 +856,11 @@
             <div class="prefilled-textarea-mock">
                 “您好！我是今天入职的老师，目前正在 <b>3层沙发区</b> 自助办理。我想问一下：<span>（在此处输入老师您遇到的疑问）</span> ”
             </div>
-            <a href="dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ" class="inner-jump-btn" style="background:var(--xdf-primary); color:white; font-size:12px; padding:8px;">
+            <button onclick="handleDingtalkJump('dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ', '求助HR')" class="inner-jump-btn" style="background:var(--xdf-primary); color:white; font-size:12px; padding:8px;">
                 <i class="fa-solid fa-comment-dots"></i> 一键拉起文字对话窗口（免开口）
-            </a>
+            </button>
         </div>
 
-        <!-- 备用图片弹窗通道 -->
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
             <button onclick="openModal('咨询HR小助手 - 享享', 'https://cropgif.net/images/1781084821182-830dbdeb-3d81-4b8c-b638-0d30a2f47a08.png')" style="background:white; border:1px solid #CCC; padding:8px; border-radius:10px; font-size:11.5px; font-weight:bold; cursor:pointer;"><i class="fa-solid fa-robot" style="color:var(--xdf-primary);"></i> 查看享享二维码</button>
             <button onclick="openModal('呼叫现场老师一对一协助', 'https://cropgif.net/images/1781084740659-fea66a88-9c84-48ad-beae-2ee20871585a.jpg')" style="background:white; border:1px solid #CCC; padding:8px; border-radius:10px; font-size:11.5px; font-weight:bold; cursor:pointer;"><i class="fa-solid fa-user-tie" style="color:var(--xdf-success);"></i> 查看现场HR位置</button>
@@ -877,13 +869,12 @@
 
 </div>
 
-<!-- 全局弹窗（使用 fixed + flex 完美居中覆盖） -->
 <div class="modal-overlay" id="global-modal" onclick="if(event.target===this) closeModal()">
     <div class="modal-body">
         <div style="position:absolute; right:14px; top:14px; font-size:22px; color:var(--text-muted); cursor:pointer;" onclick="closeModal()"><i class="fa-solid fa-circle-xmark"></i></div>
         <h4 id="modal-title" style="color:var(--xdf-dark); font-size:14.5px; margin-bottom:12px; font-weight:bold;">查看面板</h4>
         <img id="modal-image" src="" alt="二维码" style="width:100%; max-height:220px; object-fit:contain; border:1px solid #EEE; border-radius:8px; margin-bottom:12px; background:#FFF;">
-        <p style="font-size:11px; color:var(--text-muted);">提示：长按图片或扫码可进行下一步查看</p>
+        <p style="font-size:11px; color:var(--text-muted);" id="modal-tip">提示：长按图片或扫码可进行下一步查看</p>
     </div>
 </div>
 
@@ -899,6 +890,42 @@
     const pPlayBtn = document.getElementById('p-play-btn');
     const pTimeDisplay = document.getElementById('p-time-display');
     const pSpeedBtn = document.getElementById('p-speed-btn');
+
+    // 智能环境检测与跳转防护处理器
+    function handleDingtalkJump(targetUrl, type) {
+        const ua = navigator.userAgent.toLowerCase();
+        const isWeChat = ua.indexOf('micromessenger') !== -1;
+        
+        if (isWeChat) {
+            // 自动精细化复制引导词，避免白屏卡死
+            let textToCopy = "HR小助手";
+            if(type === '求助HR') {
+                textToCopy = "您好！我是今天入职的老师，目前正在3层沙发区自助办理。";
+            }
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // 复用精美的全局弹窗组件显示微信引导，告别原生alert卡顿
+                document.getElementById('modal-title').innerText = "💡 微信环境一键跳转提示";
+                document.getElementById('modal-image').src = "https://cropgif.net/images/1781084821182-830dbdeb-3d81-4b8c-b638-0d30a2f47a08.png"; // 复用享享引导图
+                document.getElementById('modal-tip').innerHTML = `
+                    <div class="wechat-notice-box">
+                        由于微信系统环境安全限制，无法在微信直接拉起钉钉客户端。<br><br>
+                        <b>🌟 完美避坑操作指引：</b><br>
+                        1. 请点击屏幕右上方 <b>【···】</b> 选择 <b>【在浏览器中打开】</b> 即可享受一键唤醒跳转！<br>
+                        2. 或是直接打开官方<b>【云办公App】</b>或<b>【钉钉】</b>，在搜索框中搜索<b>“HR小助手”</b>发起互动。<br>
+                        <span style="color:#00A0E9;">* 相关提问台词已自动为您复制到剪贴板。</span>
+                    </div>
+                `;
+                document.getElementById('global-modal').style.display = 'flex';
+            }).catch(() => {
+                // 兜底降级处理
+                alert("由于微信环境限制无法直接拉起钉钉。请点击右上角 [...] 选择 [在浏览器中打开] 即可享受一键唤醒；或者请直接前往云办公APP/钉钉搜索“HR小助手”。");
+            });
+        } else {
+            // 正常系统浏览器或钉钉环境无缝拉起
+            window.location.href = targetUrl;
+        }
+    }
 
     // 一键确认落座签到
     function doCheckin() {
@@ -1054,6 +1081,7 @@
     function openModal(title, qrUrl) {
         document.getElementById('modal-title').innerText = title;
         document.getElementById('modal-image').src = qrUrl;
+        document.getElementById('modal-tip').innerText = "提示：长按图片或扫码可进行下一步查看";
         document.getElementById('global-modal').style.display = 'flex';
     }
 

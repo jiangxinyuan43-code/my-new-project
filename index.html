@@ -667,7 +667,27 @@
             50% { transform: scale(1.1); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
         }
-    </style>
+    
+.progress-bar{height:6px;background:#EAEAEA;border-radius:99px;margin-top:8px;overflow:hidden;}
+#progress-fill{width:25%;height:100%;background:#00A0E9;transition:.4s;}
+.avatar-box{animation:floatAvatar 3s ease-in-out infinite;}
+@keyframes floatAvatar{
+0%{transform:translateY(0)}
+50%{transform:translateY(-4px)}
+100%{transform:translateY(0)}
+}
+.success-toast{
+position:fixed;top:80px;left:50%;transform:translateX(-50%);
+background:#2ECC71;color:#fff;padding:12px 18px;border-radius:10px;
+z-index:99999;display:none;font-weight:bold;
+}
+.logo-splash{
+position:fixed;inset:0;background:white;display:flex;
+flex-direction:column;justify-content:center;align-items:center;
+z-index:999999;
+}
+
+</style>
 </head>
 <body>
 
@@ -682,12 +702,12 @@
 
 <div class="phone-container">
 
-    <div class="status-companion-bar">
+    <div class="logo-splash" id="logoSplash"><h1 style="color:#00A0E9">新东方 NEW ORIENTAL</h1><p>欢迎加入新东方 · 享享已上线</p></div><div class="success-toast" id="successToast">🎉 恭喜完成入职第一课</div><div class="status-companion-bar">
         <div class="status-left">
             <i class="fa-solid fa-id-badge"></i>
             <span id="companion-text">✨ 虚拟接待员享享正在陪伴您...</span>
         </div>
-        <div class="status-right" id="companion-progress-badge">进度: 1/4</div>
+        <div class="status-right" id="companion-progress-badge">进度: 1/4</div></div><div class="progress-bar"><div id="progress-fill"></div></div><div class="status-companion-bar" style="display:none">
     </div>
 
     <div class="header-banner">
@@ -751,7 +771,7 @@
         </div>
         <div class="media-container video-theme-bg">
             <div class="video-wrapper">
-                <video id="real-video-player" src="" poster="https://cropgif.net/images/1781141171194-e2fa34a6-1e2e-45ef-915e-81935b4629c8.png" controls preload="none"></video>
+                <video id="real-video-player" src="https://cropgif.net/videos/1781582511956-4d79f356-4109-4cc8-95d4-9082c167b0bb.mp4" poster="https://cropgif.net/images/1781141171194-e2fa34a6-1e2e-45ef-915e-81935b4629c8.png" controls preload="metadata" playsinline webkit-playsinline></video>
             </div>
             <p style="color:rgba(255,255,255,0.7); font-size:11px; text-align:center; margin-top:6px;">🎬 视频模块已就绪，后续上传真实MP4视频链接后即可直接播放</p>
         </div>
@@ -782,7 +802,7 @@
             </span>
         </div>
 
-        <button class="action-submit-btn" id="step1-next-btn" disabled onclick="completeStep(1, 2)">请先点击上方按钮完成落座签到</button>
+        <button class="action-submit-btn" id="step1-next-btn" disabled onclick="completeStep(1, 2)">请完成签到并观看入职第一课视频</button>
     </div>
 
     <div class="step-content-card" id="card-step2">
@@ -1092,6 +1112,44 @@
     audio.addEventListener('ended', () => {
         pPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
     });
+
+const videoPlayer=document.getElementById('real-video-player');
+function updateProgress(step){
+ const fill=document.getElementById('progress-fill');
+ if(fill){fill.style.width=(step*25)+'%';}
+}
+function showSuccessToast(msg){
+ const t=document.getElementById('successToast');
+ t.innerText=msg;
+ t.style.display='block';
+ setTimeout(()=>t.style.display='none',3000);
+}
+setTimeout(()=>{
+ const s=document.getElementById('logoSplash');
+ if(s) s.style.display='none';
+},2000);
+
+if(videoPlayer){
+ videoPlayer.addEventListener('ended',()=>{
+   document.getElementById('nav-step1').classList.add('completed');
+   const btn=document.getElementById('step1-next-btn');
+   btn.disabled=false;
+   btn.innerHTML='第一课已完成，进入材料提交 <i class="fa-solid fa-arrow-right"></i>';
+   showSuccessToast('🎉 恭喜完成入职第一课');
+ });
+}
+
+const _oldSwitchStep=switchStep;
+switchStep=function(stepNum){
+ _oldSwitchStep(stepNum);
+ updateProgress(stepNum);
+}
+
+const _oldFinish=finishAll;
+finishAll=function(){
+ document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;font-family:sans-serif"><h1>🎉 恭喜完成自助入职</h1><p>欢迎加入新东方，祝您工作顺利！</p></div>';
+}
+
 </script>
 </body>
 </html>

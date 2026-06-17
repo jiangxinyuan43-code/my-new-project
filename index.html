@@ -38,7 +38,6 @@
             line-height: 1.6;
         }
 
-        /* 移动端独立黄金容器 */
         .phone-container {
             max-width: 480px;
             margin: 0 auto;
@@ -49,7 +48,6 @@
             padding-bottom: 80px;
         }
 
-        /* 常驻顶部的“虚拟陪伴”状态看板 */
         .status-companion-bar {
             background: #E6F4FA;
             border-bottom: 1px solid rgba(0, 160, 233, 0.15);
@@ -85,7 +83,6 @@
             font-size: 11px;
         }
 
-        /* 迎新头部 */
         .header-banner {
             background: var(--xdf-primary-gradient);
             color: #ffffff;
@@ -121,7 +118,6 @@
             opacity: 0.85;
         }
 
-        /* 智能享享虚拟接待员气泡 */
         .xiangxiang-guide {
             display: flex;
             align-items: flex-start;
@@ -134,7 +130,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* 💡 改动 1：使用用户提供的图片 URL 完美替换享享头像 */
         .avatar-box {
             width: 44px;
             height: 44px;
@@ -166,7 +161,6 @@
             font-size: 14.5px;
         }
 
-        /* 分步平滑横轴导航 */
         .flow-nav {
             padding: 0 24px;
             margin-bottom: 20px;
@@ -219,7 +213,6 @@
             color: var(--xdf-success);
         }
 
-        /* 核心步骤卡片 */
         .step-content-card {
             background: #ffffff;
             margin: 0 24px 24px 24px;
@@ -254,7 +247,6 @@
             color: var(--xdf-primary);
         }
 
-        /* 一键确认落座签到卡片 */
         .checkin-action-box {
             background: #FFF9E6;
             border: 1px solid #FFEAA7;
@@ -288,7 +280,6 @@
             cursor: default;
         }
 
-        /* 💡 改动 2：多媒体流控制组件样式重构（视频与播客拆分） */
         .media-section-title {
             font-size: 13px;
             font-weight: bold;
@@ -329,7 +320,6 @@
             object-fit: contain;
         }
 
-        /* 专属高级播客控制条 */
         .podcast-player-box {
             display: flex;
             align-items: center;
@@ -375,7 +365,6 @@
             cursor: pointer;
         }
 
-        /* Wi-Fi组件 */
         .wifi-action-card {
             background: var(--xdf-gray);
             border: 1px solid #EAEAEA;
@@ -398,7 +387,6 @@
             cursor: pointer;
         }
 
-        /* 材料提交核心面板 */
         .platform-redirect-box {
             background: #FDFEFE;
             border: 2px dashed #D5DBDB;
@@ -426,7 +414,6 @@
             border: 1px solid #EEE;
         }
 
-        /* APP下载排版 */
         .app-qr-box {
             width: 140px;
             height: 140px;
@@ -462,7 +449,6 @@
             gap: 6px;
         }
 
-        /* 20分钟等待期缓冲任务卡片 */
         .waiting-buffer-card {
             background: #FFF9E6;
             border: 1px solid #FFEAA7;
@@ -474,7 +460,6 @@
             align-items: flex-start;
         }
 
-        /* 通用下一步通关按钮 */
         .action-submit-btn {
             width: 100%;
             background: var(--xdf-primary);
@@ -499,7 +484,6 @@
             cursor: not-allowed;
         }
 
-        /* 终极一键跳转卡片面板 */
         .one-click-card-panel {
             background: var(--xdf-primary-gradient);
             color: white;
@@ -543,7 +527,6 @@
             cursor: pointer;
         }
 
-        /* 低社交摩擦——半自动化填空式文字提问面板 */
         .bottom-support-bar {
             background: #ffffff;
             border-top: 1px solid #EEEEEE;
@@ -590,7 +573,6 @@
             padding: 0 4px;
         }
 
-        /* 超时温馨主动弹窗提示 */
         .timeout-toast-helper {
             position: fixed;
             bottom: 110px;
@@ -618,7 +600,6 @@
             pointer-events: auto;
         }
 
-        /* 全局弹窗蒙层样式 */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -646,7 +627,6 @@
             animation: scaleUp 0.3s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
-        /* 针对微信限制定制的说明样式 */
         .wechat-notice-box {
             text-align: left;
             background: #F2F4F4;
@@ -656,7 +636,7 @@
             color: #566573;
             margin-top: 10px;
             line-height: 1.5;
-            border-left: 4px solid #2ECC71;
+            border-left: 4px solid var(--xdf-primary);
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -668,25 +648,24 @@
             100% { transform: scale(1); opacity: 1; }
         }
     
-.progress-bar{height:6px;background:#EAEAEA;border-radius:99px;margin-top:8px;overflow:hidden;}
-#progress-fill{width:25%;height:100%;background:#00A0E9;transition:.4s;}
-.avatar-box{animation:floatAvatar 3s ease-in-out infinite;}
-@keyframes floatAvatar{
-0%{transform:translateY(0)}
-50%{transform:translateY(-4px)}
-100%{transform:translateY(0)}
-}
-.success-toast{
-position:fixed;top:80px;left:50%;transform:translateX(-50%);
-background:#2ECC71;color:#fff;padding:12px 18px;border-radius:10px;
-z-index:99999;display:none;font-weight:bold;
-}
-.logo-splash{
-position:fixed;inset:0;background:white;display:flex;
-flex-direction:column;justify-content:center;align-items:center;
-z-index:999999;
-}
-
+        .progress-bar{height:6px;background:#EAEAEA;border-radius:99px;margin-top:8px;overflow:hidden;}
+        #progress-fill{width:25%;height:100%;background:#00A0E9;transition:.4s;}
+        .avatar-box{animation:floatAvatar 3s ease-in-out infinite;}
+        @keyframes floatAvatar{
+            0%{transform:translateY(0)}
+            50%{transform:translateY(-4px)}
+            100%{transform:translateY(0)}
+        }
+        .success-toast{
+            position:fixed;top:80px;left:50%;transform:translateX(-50%);
+            background:#2ECC71;color:#fff;padding:12px 18px;border-radius:10px;
+            z-index:99999;display:none;font-weight:bold;
+        }
+        .logo-splash{
+            position:fixed;inset:0;background:white;display:flex;
+            flex-direction:column;justify-content:center;align-items:center;
+            z-index:999999;
+        }
 </style>
 </head>
 <body>
@@ -702,13 +681,17 @@ z-index:999999;
 
 <div class="phone-container">
 
-    <div class="logo-splash" id="logoSplash"><h1 style="color:#00A0E9">新东方 NEW ORIENTAL</h1><p>欢迎加入新东方 · 享享已上线</p></div><div class="success-toast" id="successToast">🎉 恭喜完成入职第一课</div><div class="status-companion-bar">
+    <div class="logo-splash" id="logoSplash"><h1 style="color:#00A0E9">新东方 NEW ORIENTAL</h1><p>欢迎加入新东方 · 享享已上线</p></div>
+    <div class="success-toast" id="successToast">🎉 恭喜完成入职第一课</div>
+    
+    <div class="status-companion-bar">
         <div class="status-left">
             <i class="fa-solid fa-id-badge"></i>
             <span id="companion-text">✨ 虚拟接待员享享正在陪伴您...</span>
         </div>
-        <div class="status-right" id="companion-progress-badge">进度: 1/4</div></div><div class="progress-bar"><div id="progress-fill"></div></div><div class="status-companion-bar" style="display:none">
+        <div class="status-right" id="companion-progress-badge">进度: 1/4</div>
     </div>
+    <div class="progress-bar"><div id="progress-fill"></div></div>
 
     <div class="header-banner">
         <div class="logo-placeholder"><i class="fa-solid fa-graduation-cap"></i> 新东方 NEW ORIENTAL</div>
@@ -761,13 +744,13 @@ z-index:999999;
 
         <div class="wifi-action-card">
             <div style="font-size:12.5px; color:var(--xdf-dark); font-weight:bold;">
-                <i class="fa-solid fa-wifi"></i> 专属Wi-Fi：XDF (免密弹窗连)
+                <i class="fa-solid fa-wifi"></i> 专属Wi-Fi：XDF (隐藏网络引导)
             </div>
-            <button class="copy-badge-btn" onclick="copyWifi()">复制网名</button>
+            <button class="copy-badge-btn" onclick="copyWifi()">连接无线网</button>
         </div>
 
         <div class="media-section-title">
-            <i class="fa-solid fa-video" style="color:var(--xdf-primary)"></i> 选项 A：看高能版视频宣讲（独立留出槽位）
+            <i class="fa-solid fa-video" style="color:var(--xdf-primary)"></i> 选项 A：看高能版视频宣讲
         </div>
         <div class="media-container video-theme-bg">
             <div class="video-wrapper">
@@ -777,7 +760,7 @@ z-index:999999;
         </div>
 
         <div class="media-section-title">
-            <i class="fa-solid fa-podcast" style="color:#E74C3C"></i> 选项 B：听轻松版入职播客（音频专属控制组件）
+            <i class="fa-solid fa-podcast" style="color:#E74C3C"></i> 选项 B：听轻松版入职播客
         </div>
         <div class="media-container podcast-theme-bg">
             <audio id="real-audio-player" src="https://cropgif.net/audio/1780969327343-d1a52b8f-4390-4864-8d7f-0de83bb3e3f8.mp3" preload="metadata"></audio>
@@ -892,14 +875,14 @@ z-index:999999;
 <div class="modal-overlay" id="global-modal" onclick="if(event.target===this) closeModal()">
     <div class="modal-body">
         <div style="position:absolute; right:14px; top:14px; font-size:22px; color:var(--text-muted); cursor:pointer;" onclick="closeModal()"><i class="fa-solid fa-circle-xmark"></i></div>
-        <h4 id="modal-title" style="color:var(--xdf-dark); font-size:14.5px; margin-bottom:12px; font-weight:bold;">查看面板</h4>
-        <img id="modal-image" src="" alt="二维码" style="width:100%; max-height:220px; object-fit:contain; border:1px solid #EEE; border-radius:8px; margin-bottom:12px; background:#FFF;">
-        <p style="font-size:11px; color:var(--text-muted);" id="modal-tip">提示：长按图片或扫码可进行下一步查看</p>
+        <h4 id="modal-title" style="color:var(--xdf-dark); font-size:15px; margin-bottom:12px; font-weight:bold;">查看面板</h4>
+        <img id="modal-image" src="" alt="二维码" style="width:100%; max-height:220px; object-fit:contain; border:1px solid #EEE; border-radius:8px; margin-bottom:12px; background:#FFF; display:block;">
+        <div id="modal-tip" style="font-size:12px; color:#5D6D7E; text-align:left; line-height:1.5;">提示：长按图片或扫码可进行下一步查看</div>
     </div>
 </div>
 
 <script>
-    // ===== 核心全局状态管理 =====
+    // ===== 全局核心状态机 =====
     let currentStep = 1;
     let isCheckedIn = false;
     let inactivityTimer = null;
@@ -910,107 +893,163 @@ z-index:999999;
     const pPlayBtn = document.getElementById('p-play-btn');
     const pTimeDisplay = document.getElementById('p-time-display');
     const pSpeedBtn = document.getElementById('p-speed-btn');
+    const videoPlayer = document.getElementById('real-video-player');
 
-    // 智能环境检测与跳转防护处理器
+    // 检测微信内置环境
+    function isWeChatEnvironment() {
+        return /micromessenger/i.test(navigator.userAgent.toLowerCase());
+    }
+
+    // ===== 页面加载生命周期：无缝恢复候选人进度锁 =====
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedStep = localStorage.getItem('xdf_candidate_step');
+        const savedCheckin = localStorage.getItem('xdf_candidate_checkin');
+        const savedVideoDone = localStorage.getItem('xdf_candidate_video_done');
+
+        if (savedCheckin === 'true') {
+            isCheckedIn = true;
+            repairCheckinUI();
+        }
+        if (savedVideoDone === 'true') {
+            unlockStep1NextButton();
+        }
+        if (savedStep) {
+            currentStep = parseInt(savedStep, 10);
+            executeStepRender(currentStep);
+        }
+        resetInactivityTimer();
+    });
+
+    // ===== 痛点优化 1：高能 Wi-Fi 隐藏网络添加指南功能 =====
+    function copyWifi() {
+        // 自动写入剪贴板
+        navigator.clipboard.writeText('XDF').then(() => {
+            // 精准呈现手动添加隐藏网络的防抓瞎向导弹窗
+            document.getElementById('modal-title').innerText = "📶 专属无线网连接秘籍";
+            document.getElementById('modal-image').style.display = 'none'; // 隐藏无用图
+            document.getElementById('modal-tip').innerHTML = `
+                <div class="wechat-notice-box" style="border-left-color: var(--xdf-warm); background: #FEF9E7;">
+                    📱 网络名称 <b style="color:var(--xdf-warm);">XDF</b> 已成功复制到您的剪贴板！<br><br>
+                    若您的无线网列表中<b>找不到 XDF 信号</b>，请按如下步骤手动添加网络：<br>
+                    1️⃣ 滑动到手机无线网列表最下方，点击 <b>【添加网络】</b>（或其它网络）；<br>
+                    2️⃣ 网络名称/SSID 手动输入：<b style="color:var(--xdf-primary)">XDF</b><br>
+                    3️⃣ 安全性/加密类型务必选择：<b>【无】</b> (或 None)；<br>
+                    4️⃣ 点击连接后，手机会自动弹出浏览器，<b>输入您的手机号获取验证码</b>，登录即可成功联网！
+                </div>
+            `;
+            document.getElementById('global-modal').style.display = 'flex';
+        }).catch(() => {
+            alert('Wi-Fi名称 [ XDF ] 已复制，安全性请选择 [ 无 ]');
+        });
+    }
+
+    // ===== 痛点优化 2：唤起钉钉的微信环境重试及防护 =====
     function handleDingtalkJump(targetUrl, type) {
-        const ua = navigator.userAgent.toLowerCase();
-        const isWeChat = ua.indexOf('micromessenger') !== -1;
-        
-        if (isWeChat) {
-            // 自动精细化复制引导词，避免白屏卡死
-            let textToCopy = "HR小助手";
-            if(type === '求助HR') {
-                textToCopy = "您好！我是今天入职的老师，目前正在3层沙发区自助办理。";
-            }
-            
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                // 复用精美的全局弹窗组件显示微信引导，告别原生alert卡顿
-                document.getElementById('modal-title').innerText = "💡 微信环境一键跳转提示";
-                document.getElementById('modal-image').src = "https://cropgif.net/images/1781084821182-830dbdeb-3d81-4b8c-b638-0d30a2f47a08.png"; // 复用享享引导图
+        let textToCopy = "HR小助手";
+        if (type === '求助HR') {
+            textToCopy = "您好！我是今天入职的老师，目前正在3层沙发区自助办理。想咨询一下入职相关问题。";
+        } else if (type === '互动测试') {
+            textToCopy = "俱乐部";
+        }
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            if (isWeChatEnvironment()) {
+                let copyTip = type === '求助HR' ? '“求助信息”' : '互动测试关键词“俱乐部”';
+                document.getElementById('modal-title').innerText = "💡 微信环境防卡死提示";
+                document.getElementById('modal-image').style.display = 'block';
+                document.getElementById('modal-image').src = "https://cropgif.net/images/1781084821182-830dbdeb-3d81-4b8c-b638-0d30a2f47a08.png";
                 document.getElementById('modal-tip').innerHTML = `
                     <div class="wechat-notice-box">
-                        由于微信系统环境安全限制，无法在微信直接拉起钉钉客户端。<br><br>
-                        <b>🌟 完美避坑操作指引：</b><br>
-                        1. 请点击屏幕右上方 <b>【···】</b> 选择 <b>【在浏览器中打开】</b> 即可享受一键唤醒跳转！<br>
-                        2. 或是直接打开官方<b>【云办公App】</b>或<b>【钉钉】</b>，在搜索框中搜索<b>“HR小助手”</b>发起互动。<br>
-                        <span style="color:#00A0E9;">* 相关提问台词已自动为您复制到剪贴板。</span>
+                        由于微信外部阻断限制，暂时无法直接唤醒钉钉客户端。<br><br>
+                        <b>🌟 免开口顺畅办理指引：</b><br>
+                        1. 强烈建议点击右上角 <b>【···】</b> 选择 <b>【在浏览器中打开】</b>，即可实现一键无缝拉起钉钉！<br>
+                        2. 亦可直接切回您的 <b>【钉钉 App】</b>，在顶部搜索框直接粘贴搜索 <b>“HR小助手”</b> 即可。<br>
+                        <span style="color:var(--xdf-primary); font-weight:bold;">* 相关${copyTip}已自动复制，无需再次打字。</span>
                     </div>
                 `;
                 document.getElementById('global-modal').style.display = 'flex';
-            }).catch(() => {
-                // 兜底降级处理
-                alert("由于微信环境限制无法直接拉起钉钉。请点击右上角 [...] 选择 [在浏览器中打开] 即可享受一键唤醒；或者请直接前往云办公APP/钉钉搜索“HR小助手”。");
-            });
-        } else {
-            // 正常系统浏览器或钉钉环境无缝拉起
-            window.location.href = targetUrl;
-        }
+            } else {
+                showSuccessToast("正在安全唤醒钉钉客户端...");
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 300);
+            }
+        });
     }
 
-    // 一键确认落座签到
+    // 确认落座前置签到
     function doCheckin() {
         isCheckedIn = true;
-        const checkinUrl = 'https://form.wjx.com/vm/PnjcYyg.aspx#';
-        
-        window.open(checkinUrl, '_blank');
+        localStorage.setItem('xdf_candidate_checkin', 'true');
+        window.open('https://form.wjx.com/vm/PnjcYyg.aspx#', '_blank');
 
-        const btn = document.getElementById('checkin-button');
-        btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> 签到成功！后台已感知您的落座';
-        btn.classList.add('done');
-
-        const nextBtn = document.getElementById('step1-next-btn');
-        nextBtn.disabled = false;
-        nextBtn.innerHTML = '已确认落座，开始入职第一课 <i class="fa-solid fa-arrow-right"></i>';
-
+        repairCheckinUI();
+        unlockStep1NextButton();
         resetInactivityTimer();
     }
 
-    // 全局陪伴状态条随步骤平滑更新
+    function repairCheckinUI() {
+        const btn = document.getElementById('checkin-button');
+        if (btn) {
+            btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> 签到成功！后台已感知您的落座';
+            btn.classList.add('done');
+        }
+    }
+
+    function unlockStep1NextButton() {
+        const nextBtn = document.getElementById('step1-next-btn');
+        if (nextBtn) {
+            nextBtn.disabled = false;
+            nextBtn.innerHTML = '已确认落座，开始入职第一课 <i class="fa-solid fa-arrow-right"></i>';
+        }
+    }
+
+    // 全局陪伴状态随步骤平滑更新
     function updateCompanionStatus(stepNum) {
         const barText = document.getElementById('companion-text');
         const badge = document.getElementById('companion-progress-badge');
+        if (badge) badge.innerText = `进度: ${stepNum}/4`;
         
-        badge.innerText = `进度: ${stepNum}/4`;
-        
+        if (!barText) return;
         switch(stepNum) {
-            case 1:
-                barText.innerText = "✨ 虚拟接待员享享正在陪伴您了解多媒体指南...";
-                break;
-            case 2:
-                barText.innerText = "📝 老师，正在微信平台采集信息及合同签署...";
-                break;
-            case 3:
-                barText.innerText = "⚡ 正在配置云办公APP，等待接收账号短信...";
-                break;
-            case 4:
-                barText.innerText = "🎉 恭喜老师，正在进行最后的通关互动测试...";
-                break;
+            case 1: barText.innerText = "✨ 虚拟接待员享享正在陪伴您解密入职宣讲..."; break;
+            case 2: barText.innerText = "📝 老师，正在微信平台采集信息及合同签署..."; break;
+            case 3: barText.innerText = "⚡ 正在配置云办公APP，等待接收账号短信..."; break;
+            case 4: barText.innerText = "🎉 恭喜老师，正在进行最后的通关互动测试..."; break;
         }
     }
 
-    // 步骤平滑切换逻辑
+    // 步骤流转核心控制
     function switchStep(stepNum) {
         if (stepNum > 1 && !isCheckedIn) {
-            alert('为了保障现场HR能及时收到您的落座信号，请老师先点击模块一的【一键确认落座办理】完成前置签到。');
+            alert('为了保障沙发区HR能精准定位到您，请老师先点击模块一的【一键确认落座办理】完成前置签到。');
             return;
         }
-
         currentStep = stepNum;
-        
+        localStorage.setItem('xdf_candidate_step', stepNum); // 本地锁死进度
+        executeStepRender(stepNum);
+    }
+
+    function executeStepRender(stepNum) {
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         document.querySelectorAll('.step-content-card').forEach(card => card.classList.remove('active'));
         
-        document.getElementById('nav-step' + stepNum).classList.add('active');
-        document.getElementById('card-step' + stepNum).classList.add('active');
+        const targetNav = document.getElementById('nav-step' + stepNum);
+        const targetCard = document.getElementById('card-step' + stepNum);
+        
+        if (targetNav) targetNav.classList.add('active');
+        if (targetCard) targetCard.classList.add('active');
 
         updateCompanionStatus(stepNum);
+        updateProgressBar(stepNum);
         resetInactivityTimer();
         document.getElementById('help-toast').classList.remove('show');
 
-        // 接待员享享的温馨文案动态重构
+        // 接待员享享的温馨提示文本更新
         const title = document.getElementById('xiangxiang-title');
         const text = document.getElementById('xiangxiang-text');
-        
+        if (!title || !text) return;
+
         if(stepNum === 1) {
             title.innerText = "接待员享享：入职第一课";
             text.innerText = "欢迎各位老师入座！沙发区环境舒适安静，请您先点击下方的“一键确认落座办理”，告知系统您的到来。随后可戴上耳机，在下方观看宣讲视频或收听专属入职播客。";
@@ -1027,11 +1066,12 @@ z-index:999999;
     }
 
     function completeStep(current, next) {
-        document.getElementById('nav-step' + current).classList.add('completed');
+        const nav = document.getElementById('nav-step' + current);
+        if (nav) nav.classList.add('completed');
         switchStep(next);
     }
 
-    // 💡 改动 2：多媒体流控制逻辑更新（音频/播客模块专属 JS 控制）
+    // 音频及多媒体播放流控制
     function toggleAudio() {
         if (audio.paused) {
             audio.play();
@@ -1042,11 +1082,16 @@ z-index:999999;
         }
     }
 
-    audio.addEventListener('timeupdate', () => {
-        if (audio.duration) {
-            pTimeDisplay.innerText = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
-        }
-    });
+    if (audio) {
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                pTimeDisplay.innerText = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+            }
+        });
+        audio.addEventListener('ended', () => {
+            pPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+        });
+    }
 
     function changeAudioSpeed() {
         if (audio.playbackRate === 1.0) {
@@ -1067,7 +1112,12 @@ z-index:999999;
         return (min < 10 ? '0' : '') + min + ':' + (sec < 10 ? '0' : '') + sec;
     }
 
-    // 系统防流失超时主动求助提示组件
+    function updateProgressBar(step){
+        const fill = document.getElementById('progress-fill');
+        if(fill){ fill.style.width = (step * 25) + '%'; }
+    }
+
+    // 防流失主动求助计时器
     function resetInactivityTimer() {
         clearInactivityTimer();
         if (!isCheckedIn || toastShownForStep[currentStep]) return; 
@@ -1088,18 +1138,20 @@ z-index:999999;
     document.addEventListener('click', resetInactivityTimer);
     document.addEventListener('touchstart', resetInactivityTimer);
 
-    function finishAll() {
-        alert('恭喜老师圆满通关入职自助流程！期待您在新东方的精彩旅程！');
-        clearInactivityTimer();
-    }
-
-    function copyWifi() {
-        navigator.clipboard.writeText('XDF');
-        alert('📱 Wi-Fi名称 [ XDF ] 已成功复制到老师的剪贴板！');
+    // 视频播放完毕后自动解锁第一关限制
+    if(videoPlayer){
+        videoPlayer.addEventListener('ended', () => {
+            localStorage.setItem('xdf_candidate_video_done', 'true');
+            const nav = document.getElementById('nav-step1');
+            if (nav) nav.classList.add('completed');
+            unlockStep1NextButton();
+            showSuccessToast('🎉 恭喜完成入职第一课');
+        });
     }
 
     function openModal(title, qrUrl) {
         document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-image').style.display = 'block';
         document.getElementById('modal-image').src = qrUrl;
         document.getElementById('modal-tip').innerText = "提示：长按图片或扫码可进行下一步查看";
         document.getElementById('global-modal').style.display = 'flex';
@@ -1109,47 +1161,30 @@ z-index:999999;
         document.getElementById('global-modal').style.display = 'none';
     }
 
-    audio.addEventListener('ended', () => {
-        pPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
-    });
+    function showSuccessToast(msg){
+        const t = document.getElementById('successToast');
+        if (t) {
+            t.innerText = msg;
+            t.style.display = 'block';
+            setTimeout(() => t.style.display = 'none', 3000);
+        }
+    }
 
-const videoPlayer=document.getElementById('real-video-player');
-function updateProgress(step){
- const fill=document.getElementById('progress-fill');
- if(fill){fill.style.width=(step*25)+'%';}
-}
-function showSuccessToast(msg){
- const t=document.getElementById('successToast');
- t.innerText=msg;
- t.style.display='block';
- setTimeout(()=>t.style.display='none',3000);
-}
-setTimeout(()=>{
- const s=document.getElementById('logoSplash');
- if(s) s.style.display='none';
-},2000);
+    setTimeout(() => {
+        const s = document.getElementById('logoSplash');
+        if(s) s.style.display = 'none';
+    }, 2000);
 
-if(videoPlayer){
- videoPlayer.addEventListener('ended',()=>{
-   document.getElementById('nav-step1').classList.add('completed');
-   const btn=document.getElementById('step1-next-btn');
-   btn.disabled=false;
-   btn.innerHTML='第一课已完成，进入材料提交 <i class="fa-solid fa-arrow-right"></i>';
-   showSuccessToast('🎉 恭喜完成入职第一课');
- });
-}
-
-const _oldSwitchStep=switchStep;
-switchStep=function(stepNum){
- _oldSwitchStep(stepNum);
- updateProgress(stepNum);
-}
-
-const _oldFinish=finishAll;
-finishAll=function(){
- document.body.innerHTML='<div style="display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column;font-family:sans-serif"><h1>🎉 恭喜完成自助入职</h1><p>欢迎加入新东方，祝您工作顺利！</p></div>';
-}
-
+    function finishAll() {
+        localStorage.clear(); // 自助报到顺利完成后清除本地状态
+        document.body.innerHTML = `
+            <div style="display:flex; height:100vh; align-items:center; justify-content:center; flex-direction:column; font-family:sans-serif; text-align:center; padding:24px;">
+                <i class="fa-solid fa-circle-check" style="font-size:56px; color:#2ECC71; margin-bottom:16px;"></i>
+                <h1 style="font-size:24px; color:#2C3E50; margin-bottom:8px;">🎉 恭喜完成自助入职</h1>
+                <p style="font-size:14px; color:#7F8C8D;">欢迎正式加入新东方，祝老师未来工作顺利、桃李芬芳！</p>
+            </div>
+        `;
+    }
 </script>
 </body>
 </html>

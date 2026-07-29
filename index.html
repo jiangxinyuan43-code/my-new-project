@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>欢迎新老师 - 新东方沙发区自助入职系统</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -666,9 +669,229 @@
             flex-direction:column;justify-content:center;align-items:center;
             z-index:999999;
         }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        img, video {
+            display: block;
+            max-width: 100%;
+        }
+
+        .logo-splash{
+            position:fixed;inset:0;background:white;display:flex;
+            flex-direction:column;justify-content:center;align-items:center;
+            z-index:999999;
+            pointer-events:none;
+            animation:splashAutoHide 0.01s linear 1.35s forwards;
+        }
+
+        @keyframes splashAutoHide {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        .feedback-section {
+            max-width: 480px;
+            margin: 0 auto 32px;
+            padding: 0 24px 8px;
+        }
+
+        .feedback-panel {
+            background: #fff;
+            border: 1px solid rgba(0, 160, 233, 0.12);
+            border-radius: 18px;
+            box-shadow: 0 10px 26px rgba(0, 160, 233, 0.08);
+            padding: 20px 18px 18px;
+        }
+
+        .feedback-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--xdf-dark);
+            margin-bottom: 12px;
+        }
+
+        .feedback-subtitle {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            line-height: 1.55;
+        }
+
+        .rating-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .rating-option {
+            min-height: 88px;
+            border-radius: 16px;
+            border: 1px solid #E6EEF5;
+            background: #F9FCFE;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+            color: var(--xdf-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rating-option:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 10px 20px rgba(0, 160, 233, 0.12);
+        }
+
+        .rating-option.selected {
+            border-color: var(--xdf-primary);
+            background: linear-gradient(180deg, rgba(0, 160, 233, 0.14), rgba(0, 160, 233, 0.04));
+            box-shadow: 0 10px 24px rgba(0, 160, 233, 0.16);
+            transform: translateY(-2px);
+        }
+
+        .rating-option.selected::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            border: 2px solid rgba(0, 160, 233, 0.18);
+            pointer-events: none;
+        }
+
+        .rating-emoji {
+            font-size: 30px;
+            line-height: 1;
+            transition: transform 0.18s ease;
+        }
+
+        .rating-option:hover .rating-emoji,
+        .rating-option.selected .rating-emoji {
+            transform: scale(1.12);
+            animation: emojiBounce 0.45s ease;
+        }
+
+        .rating-label {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .rating-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .feedback-textarea {
+            width: 100%;
+            min-height: 112px;
+            border: 1px solid #D9E5EE;
+            border-radius: 14px;
+            background: #FBFDFF;
+            padding: 12px 14px;
+            resize: vertical;
+            font: inherit;
+            color: var(--text-main);
+            outline: none;
+            margin-bottom: 12px;
+        }
+
+        .feedback-textarea:focus {
+            border-color: var(--xdf-primary);
+            box-shadow: 0 0 0 3px rgba(0, 160, 233, 0.12);
+        }
+
+        .feedback-submit-btn {
+            width: 100%;
+            border: none;
+            border-radius: 14px;
+            background: var(--xdf-primary-gradient);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 13px 16px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 160, 233, 0.18);
+        }
+
+        .feedback-submit-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+            box-shadow: none;
+        }
+
+        .feedback-note {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: rgba(0, 160, 233, 0.08);
+            border: 1px solid rgba(0, 160, 233, 0.16);
+            color: var(--xdf-primary);
+            font-size: 12.5px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .feedback-toast {
+            position: fixed;
+            left: 50%;
+            bottom: 18px;
+            transform: translate(-50%, 18px);
+            background: rgba(44, 62, 80, 0.96);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+            z-index: 10001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.22s ease, transform 0.22s ease;
+            font-size: 12.5px;
+            max-width: calc(100vw - 32px);
+            white-space: nowrap;
+        }
+
+        .feedback-toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .feedback-summary {
+            margin-top: 12px;
+            display: none;
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        .feedback-summary.show {
+            display: block;
+        }
+
+        @keyframes emojiBounce {
+            0% { transform: scale(1); }
+            45% { transform: scale(1.18); }
+            100% { transform: scale(1.12); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
 </style>
 </head>
 <body>
+<noscript><style>.logo-splash{display:none !important;}</style></noscript>
+
 
 <div class="timeout-toast-helper" id="help-toast">
     <i class="fa-solid fa-bell" style="color: #F1C40F; font-size: 16px; margin-top:2px;"></i>
@@ -881,6 +1104,34 @@
     </div>
 </div>
 
+<div class="feedback-section" id="feedback-section">
+    <div class="feedback-panel">
+        <div class="feedback-title">本次入职自助办理体验如何？</div>
+        <div class="feedback-subtitle">请点选一个评价档位，填写建议后提交。您的反馈会帮助我们继续优化这套自助入职流程。</div>
+        <div class="rating-grid" id="rating-grid">
+            <button type="button" class="rating-option" data-rating="bad" aria-pressed="false">
+                <div class="rating-emoji">😞</div>
+                <div class="rating-label">差</div>
+                <div class="rating-hint">还有改进空间</div>
+            </button>
+            <button type="button" class="rating-option" data-rating="mid" aria-pressed="false">
+                <div class="rating-emoji">😐</div>
+                <div class="rating-label">中</div>
+                <div class="rating-hint">整体可用</div>
+            </button>
+            <button type="button" class="rating-option" data-rating="good" aria-pressed="false">
+                <div class="rating-emoji">😊</div>
+                <div class="rating-label">好</div>
+                <div class="rating-hint">体验顺畅</div>
+            </button>
+        </div>
+        <textarea id="feedback-text" class="feedback-textarea" placeholder="请留下您的宝贵建议或遇到的问题（选填）"></textarea>
+        <button class="feedback-submit-btn" id="feedback-submit-btn" type="button" onclick="submitFeedback()">提交评价</button>
+        <div class="feedback-note">✅ 恭喜您完成所有自助入职流程！办理完以上所有步骤后，请联系现场的 HR 老师或部门对接老师进行后续安排，他们将为您完成最终的入职确认。</div>
+        <div class="feedback-summary" id="feedback-summary"></div>
+    </div>
+</div>
+<div class="feedback-toast" id="feedback-toast" aria-live="polite"></div>
 <script>
     // ===== 全局核心状态机 =====
     let currentStep = 1;
@@ -894,6 +1145,197 @@
     const pTimeDisplay = document.getElementById('p-time-display');
     const pSpeedBtn = document.getElementById('p-speed-btn');
     const videoPlayer = document.getElementById('real-video-player');
+    const feedbackStorageKey = 'xdf_feedback_submission_v1';
+    const feedbackChoiceKey = 'xdf_feedback_choice_v1';
+    const feedbackState = {
+        selected: '',
+        submitted: false,
+        submission: null
+    };
+
+    function safeStorage() {
+        try {
+            const storage = window.localStorage;
+            const probeKey = '__xdf_storage_probe__';
+            storage.setItem(probeKey, '1');
+            storage.removeItem(probeKey);
+            return storage;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    const storageBridge = safeStorage();
+
+    function readStored(key) {
+        try {
+            return storageBridge ? storageBridge.getItem(key) : null;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function writeStored(key, value) {
+        try {
+            if (storageBridge) {
+                storageBridge.setItem(key, String(value));
+            }
+        } catch (error) {}
+    }
+
+    function clearStored() {
+        try {
+            if (storageBridge) {
+                storageBridge.clear();
+            }
+        } catch (error) {}
+    }
+
+    function safeClipboardWrite(text) {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+            return navigator.clipboard.writeText(text).then(() => true).catch(() => fallbackCopyText(text));
+        }
+        return Promise.resolve(fallbackCopyText(text));
+    }
+
+    function fallbackCopyText(text) {
+        try {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', 'readonly');
+            textarea.style.position = 'fixed';
+            textarea.style.top = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            const copied = document.execCommand('copy');
+            document.body.removeChild(textarea);
+            return copied;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function safeOpenUrl(url, target) {
+        try {
+            const opened = window.open(url, target || '_blank');
+            if (!opened) {
+                window.location.href = url;
+            }
+        } catch (error) {
+            window.location.href = url;
+        }
+    }
+
+    function safeNavigate(url) {
+        try {
+            window.location.href = url;
+        } catch (error) {}
+    }
+
+    function hideSplash() {
+        const splash = document.getElementById('logoSplash');
+        if (splash) {
+            splash.style.display = 'none';
+        }
+    }
+
+    function showFeedbackToast(message) {
+        const toast = document.getElementById('feedback-toast');
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add('show');
+        window.clearTimeout(showFeedbackToast._timer);
+        showFeedbackToast._timer = window.setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2600);
+    }
+
+    function setFeedbackSelection(level) {
+        feedbackState.selected = level;
+        writeStored(feedbackChoiceKey, level);
+        document.querySelectorAll('.rating-option').forEach((button) => {
+            const active = button.dataset.rating === level;
+            button.classList.toggle('selected', active);
+            button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+    }
+
+    function initFeedback() {
+        const buttons = Array.from(document.querySelectorAll('.rating-option'));
+        const submitBtn = document.getElementById('feedback-submit-btn');
+        const textarea = document.getElementById('feedback-text');
+        const summary = document.getElementById('feedback-summary');
+        if (!buttons.length || !submitBtn || !textarea || !summary) return;
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                if (feedbackState.submitted) return;
+                setFeedbackSelection(button.dataset.rating);
+                if (button.animate) {
+                    button.animate([
+                        { transform: 'translateY(-2px) scale(1)' },
+                        { transform: 'translateY(-2px) scale(1.06)' },
+                        { transform: 'translateY(-2px) scale(1)' }
+                    ], { duration: 360, easing: 'ease-out' });
+                }
+            });
+        });
+
+        const savedSelection = readStored(feedbackChoiceKey);
+        const savedSubmission = readStored(feedbackStorageKey);
+        if (savedSelection) {
+            setFeedbackSelection(savedSelection);
+        }
+
+        if (savedSubmission) {
+            try {
+                feedbackState.submission = JSON.parse(savedSubmission);
+                feedbackState.submitted = true;
+                textarea.value = feedbackState.submission.comment || '';
+                textarea.disabled = true;
+                submitBtn.disabled = true;
+                summary.textContent = '感谢您的反馈，我们已记录这次体验。';
+                summary.classList.add('show');
+                submitBtn.textContent = '评价已提交';
+            } catch (error) {}
+        }
+    }
+
+    function submitFeedback() {
+        const submitBtn = document.getElementById('feedback-submit-btn');
+        const textarea = document.getElementById('feedback-text');
+        const summary = document.getElementById('feedback-summary');
+        if (!submitBtn || !textarea || !summary) return;
+        if (feedbackState.submitted || readStored(feedbackStorageKey)) {
+            showFeedbackToast('评价已提交，感谢您的反馈');
+            return;
+        }
+        if (!feedbackState.selected) {
+            showFeedbackToast('请先选择一个评价档位');
+            return;
+        }
+
+        const levelTextMap = { bad: '差', mid: '中', good: '好' };
+        const payload = {
+            rating: feedbackState.selected,
+            ratingText: levelTextMap[feedbackState.selected] || feedbackState.selected,
+            comment: textarea.value.trim(),
+            pageUrl: window.location.href,
+            submittedAt: new Date().toISOString(),
+            userAgent: navigator.userAgent
+        };
+
+        console.log('xdf_feedback', payload);
+        writeStored(feedbackStorageKey, JSON.stringify(payload));
+        feedbackState.submitted = true;
+        feedbackState.submission = payload;
+        textarea.disabled = true;
+        submitBtn.disabled = true;
+        submitBtn.textContent = '评价已提交';
+        summary.textContent = '感谢您的反馈，我们已记录这次体验。';
+        summary.classList.add('show');
+        showFeedbackToast('感谢反馈，已成功提交');
+    }
 
     // 检测微信内置环境
     function isWeChatEnvironment() {
@@ -902,9 +1344,9 @@
 
     // ===== 页面加载生命周期：无缝恢复候选人进度锁 =====
     window.addEventListener('DOMContentLoaded', () => {
-        const savedStep = localStorage.getItem('xdf_candidate_step');
-        const savedCheckin = localStorage.getItem('xdf_candidate_checkin');
-        const savedVideoDone = localStorage.getItem('xdf_candidate_video_done');
+        const savedStep = readStored('xdf_candidate_step');
+        const savedCheckin = readStored('xdf_candidate_checkin');
+        const savedVideoDone = readStored('xdf_candidate_video_done');
 
         if (savedCheckin === 'true') {
             isCheckedIn = true;
@@ -918,12 +1360,13 @@
             executeStepRender(currentStep);
         }
         resetInactivityTimer();
+        initFeedback();
     });
 
     // ===== 痛点优化 1：高能 Wi-Fi 隐藏网络添加指南功能 =====
     function copyWifi() {
         // 自动写入剪贴板
-        navigator.clipboard.writeText('XDF').then(() => {
+        safeClipboardWrite('XDF').then(() => {
             // 精准呈现手动添加隐藏网络的防抓瞎向导弹窗
             document.getElementById('modal-title').innerText = "📶 专属无线网连接秘籍";
             document.getElementById('modal-image').style.display = 'none'; // 隐藏无用图
@@ -952,7 +1395,7 @@
             textToCopy = "俱乐部";
         }
 
-        navigator.clipboard.writeText(textToCopy).then(() => {
+        safeClipboardWrite(textToCopy).then(() => {
             if (isWeChatEnvironment()) {
                 let copyTip = type === '求助HR' ? '“求助信息”' : '互动测试关键词“俱乐部”';
                 document.getElementById('modal-title').innerText = "💡 微信环境防卡死提示";
@@ -971,7 +1414,7 @@
             } else {
                 showSuccessToast("正在安全唤醒钉钉客户端...");
                 setTimeout(() => {
-                    window.location.href = targetUrl;
+                    safeNavigate(targetUrl);
                 }, 300);
             }
         });
@@ -980,8 +1423,8 @@
     // 确认落座前置签到
     function doCheckin() {
         isCheckedIn = true;
-        localStorage.setItem('xdf_candidate_checkin', 'true');
-        window.open('https://form.wjx.com/vm/PnjcYyg.aspx#', '_blank');
+        writeStored('xdf_candidate_checkin', 'true');
+        safeOpenUrl('https://form.wjx.com/vm/PnjcYyg.aspx#', '_blank');
 
         repairCheckinUI();
         unlockStep1NextButton();
@@ -1026,7 +1469,7 @@
             return;
         }
         currentStep = stepNum;
-        localStorage.setItem('xdf_candidate_step', stepNum); // 本地锁死进度
+        writeStored('xdf_candidate_step', stepNum); // 本地锁死进度
         executeStepRender(stepNum);
     }
 
@@ -1136,12 +1579,13 @@
     }
 
     document.addEventListener('click', resetInactivityTimer);
-    document.addEventListener('touchstart', resetInactivityTimer);
+    document.addEventListener('touchstart', resetInactivityTimer, { passive: true });
+    document.addEventListener('pointerdown', resetInactivityTimer, { passive: true });
 
     // 视频播放完毕后自动解锁第一关限制
     if(videoPlayer){
         videoPlayer.addEventListener('ended', () => {
-            localStorage.setItem('xdf_candidate_video_done', 'true');
+            writeStored('xdf_candidate_video_done', 'true');
             const nav = document.getElementById('nav-step1');
             if (nav) nav.classList.add('completed');
             unlockStep1NextButton();
@@ -1176,7 +1620,7 @@
     }, 2000);
 
     function finishAll() {
-        localStorage.clear(); // 自助报到顺利完成后清除本地状态
+        clearStored(); // 自助报到顺利完成后清除本地状态
         document.body.innerHTML = `
             <div style="display:flex; height:100vh; align-items:center; justify-content:center; flex-direction:column; font-family:sans-serif; text-align:center; padding:24px;">
                 <i class="fa-solid fa-circle-check" style="font-size:56px; color:#2ECC71; margin-bottom:16px;"></i>

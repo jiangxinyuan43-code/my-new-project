@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>欢迎新老师 - 新东方沙发区自助入职系统</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -144,6 +141,7 @@
             border: 2px solid var(--xdf-primary);
             flex-shrink: 0;
             overflow: hidden;
+            animation: floatAvatar 3s ease-in-out infinite;
         }
 
         .avatar-box img {
@@ -557,23 +555,25 @@
             gap: 6px;
         }
 
-        .prefilled-textarea-mock {
+        .custom-question-textarea {
+            width: 100%;
+            min-height: 60px;
             background: white;
             border: 1px solid #CBD5E1;
             border-radius: 8px;
             padding: 10px;
             font-size: 12px;
-            color: #64748B;
+            color: #333;
             line-height: 1.5;
-            text-align: left;
             margin-bottom: 10px;
+            resize: none;
+            outline: none;
+            font-family: inherit;
         }
 
-        .prefilled-textarea-mock span {
-            color: var(--xdf-primary);
-            font-weight: bold;
-            border-bottom: 1px solid var(--xdf-primary);
-            padding: 0 4px;
+        .custom-question-textarea:focus {
+            border-color: var(--xdf-primary);
+            box-shadow: 0 0 0 2px rgba(0, 160, 233, 0.15);
         }
 
         .timeout-toast-helper {
@@ -585,7 +585,7 @@
             color: white;
             padding: 14px;
             border-radius: var(--radius-md);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
             z-index: 9999;
             font-size: 12.5px;
             display: flex;
@@ -642,263 +642,68 @@
             border-left: 4px solid var(--xdf-primary);
         }
 
+        .wifi-tab-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .wifi-tab-btn {
+            flex: 1;
+            padding: 6px;
+            font-size: 11px;
+            border-radius: 6px;
+            border: 1px solid #CBD5E1;
+            background: #F8FAFC;
+            cursor: pointer;
+            font-weight: bold;
+            color: #64748B;
+        }
+
+        .wifi-tab-btn.active {
+            background: var(--xdf-primary);
+            color: white;
+            border-color: var(--xdf-primary);
+        }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes scaleUp { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-
         @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.1); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
         }
-    
-        .progress-bar{height:6px;background:#EAEAEA;border-radius:99px;margin-top:8px;overflow:hidden;}
-        #progress-fill{width:25%;height:100%;background:#00A0E9;transition:.4s;}
-        .avatar-box{animation:floatAvatar 3s ease-in-out infinite;}
-        @keyframes floatAvatar{
-            0%{transform:translateY(0)}
-            50%{transform:translateY(-4px)}
-            100%{transform:translateY(0)}
+        @keyframes floatAvatar {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+            100% { transform: translateY(0); }
         }
-        .success-toast{
-            position:fixed;top:80px;left:50%;transform:translateX(-50%);
-            background:#2ECC71;color:#fff;padding:12px 18px;border-radius:10px;
-            z-index:99999;display:none;font-weight:bold;
+
+        .progress-bar { height:6px; background:#EAEAEA; border-radius:99px; margin-top:8px; overflow:hidden; }
+        #progress-fill { width:25%; height:100%; background:#00A0E9; transition:.4s; }
+        .success-toast {
+            position:fixed; top:80px; left:50%; transform:translateX(-50%);
+            background:#2ECC71; color:#fff; padding:12px 18px; border-radius:10px;
+            z-index:99999; display:none; font-weight:bold;
         }
-        .logo-splash{
-            position:fixed;inset:0;background:white;display:flex;
-            flex-direction:column;justify-content:center;align-items:center;
+        .logo-splash {
+            position:fixed; inset:0; background:white; display:flex;
+            flex-direction:column; justify-content:center; align-items:center;
             z-index:999999;
-        }
-
-        html {
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
-
-        img, video {
-            display: block;
-            max-width: 100%;
-        }
-
-        .logo-splash{
-            position:fixed;inset:0;background:white;display:flex;
-            flex-direction:column;justify-content:center;align-items:center;
-            z-index:999999;
-            pointer-events:none;
-            animation:splashAutoHide 0.01s linear 1.35s forwards;
-        }
-
-        @keyframes splashAutoHide {
-            to { opacity: 0; visibility: hidden; }
-        }
-
-        .feedback-section {
-            max-width: 480px;
-            margin: 0 auto 32px;
-            padding: 0 24px 8px;
-        }
-
-        .feedback-panel {
-            background: #fff;
-            border: 1px solid rgba(0, 160, 233, 0.12);
-            border-radius: 18px;
-            box-shadow: 0 10px 26px rgba(0, 160, 233, 0.08);
-            padding: 20px 18px 18px;
-        }
-
-        .feedback-title {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--xdf-dark);
-            margin-bottom: 12px;
-        }
-
-        .feedback-subtitle {
-            font-size: 12.5px;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-            line-height: 1.55;
-        }
-
-        .rating-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 10px;
-            margin-bottom: 14px;
-        }
-
-        .rating-option {
-            min-height: 88px;
-            border-radius: 16px;
-            border: 1px solid #E6EEF5;
-            background: #F9FCFE;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            cursor: pointer;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-            color: var(--xdf-dark);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .rating-option:hover {
-            transform: translateY(-2px) scale(1.01);
-            box-shadow: 0 10px 20px rgba(0, 160, 233, 0.12);
-        }
-
-        .rating-option.selected {
-            border-color: var(--xdf-primary);
-            background: linear-gradient(180deg, rgba(0, 160, 233, 0.14), rgba(0, 160, 233, 0.04));
-            box-shadow: 0 10px 24px rgba(0, 160, 233, 0.16);
-            transform: translateY(-2px);
-        }
-
-        .rating-option.selected::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            border: 2px solid rgba(0, 160, 233, 0.18);
-            pointer-events: none;
-        }
-
-        .rating-emoji {
-            font-size: 30px;
-            line-height: 1;
-            transition: transform 0.18s ease;
-        }
-
-        .rating-option:hover .rating-emoji,
-        .rating-option.selected .rating-emoji {
-            transform: scale(1.12);
-            animation: emojiBounce 0.45s ease;
-        }
-
-        .rating-label {
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .rating-hint {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        .feedback-textarea {
-            width: 100%;
-            min-height: 112px;
-            border: 1px solid #D9E5EE;
-            border-radius: 14px;
-            background: #FBFDFF;
-            padding: 12px 14px;
-            resize: vertical;
-            font: inherit;
-            color: var(--text-main);
-            outline: none;
-            margin-bottom: 12px;
-        }
-
-        .feedback-textarea:focus {
-            border-color: var(--xdf-primary);
-            box-shadow: 0 0 0 3px rgba(0, 160, 233, 0.12);
-        }
-
-        .feedback-submit-btn {
-            width: 100%;
-            border: none;
-            border-radius: 14px;
-            background: var(--xdf-primary-gradient);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 800;
-            padding: 13px 16px;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0, 160, 233, 0.18);
-        }
-
-        .feedback-submit-btn:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
-            box-shadow: none;
-        }
-
-        .feedback-note {
-            margin-top: 14px;
-            padding: 12px 14px;
-            border-radius: 14px;
-            background: rgba(0, 160, 233, 0.08);
-            border: 1px solid rgba(0, 160, 233, 0.16);
-            color: var(--xdf-primary);
-            font-size: 12.5px;
-            line-height: 1.6;
-            font-weight: 600;
-        }
-
-        .feedback-toast {
-            position: fixed;
-            left: 50%;
-            bottom: 18px;
-            transform: translate(-50%, 18px);
-            background: rgba(44, 62, 80, 0.96);
-            color: #fff;
-            padding: 12px 16px;
-            border-radius: 12px;
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-            z-index: 10001;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.22s ease, transform 0.22s ease;
-            font-size: 12.5px;
-            max-width: calc(100vw - 32px);
-            white-space: nowrap;
-        }
-
-        .feedback-toast.show {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
-
-        .feedback-summary {
-            margin-top: 12px;
-            display: none;
-            font-size: 12.5px;
-            color: var(--text-muted);
-            line-height: 1.55;
-        }
-
-        .feedback-summary.show {
-            display: block;
-        }
-
-        @keyframes emojiBounce {
-            0% { transform: scale(1); }
-            45% { transform: scale(1.18); }
-            100% { transform: scale(1.12); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
         }
 </style>
 </head>
 <body>
-<noscript><style>.logo-splash{display:none !important;}</style></noscript>
-
 
 <div class="timeout-toast-helper" id="help-toast">
     <i class="fa-solid fa-bell" style="color: #F1C40F; font-size: 16px; margin-top:2px;"></i>
     <div style="flex:1;">
         <strong style="color:#F1C40F; display:block; margin-bottom:2px;">老师，办理中遇到了什么疑问吗？</strong>
-        您已在此步骤落座停留超过 20 分钟。新东方后台正全程守护，内向的老师也无需担心，您可以随时点击下方的<b>【一键发送填空提问】</b>，文字联系现场HR，我们随时主动到场帮您！
-        <button onclick="document.getElementById('help-toast').classList.remove('show')" style="background:transparent; border:1px solid rgba(255,255,255,0.4); color:white; font-size:11px; padding:2px 8px; border-radius:4px; margin-top:8px; float:right;">知道了</button>
+        您已在此步骤落座停留超过 20 分钟。内向的老师无需担心，您可以直接点击下方快速呼叫，HR 老师会主动到场协助您！
+        <div style="margin-top:8px; display:flex; gap:6px; justify-content:flex-end;">
+            <button onclick="resetInactivityTimer(); document.getElementById('help-toast').classList.remove('show');" style="background:transparent; border:1px solid rgba(255,255,255,0.4); color:white; font-size:11px; padding:3px 8px; border-radius:4px;">我还在办理中</button>
+            <button onclick="sendCustomConsult('【超时协助请求】老师在此步骤停留超20分钟，需要现场HR帮助');" style="background:#F1C40F; border:none; color:#2C3E50; font-size:11px; font-weight:bold; padding:3px 8px; border-radius:4px;">立即呼叫HR</button>
+        </div>
     </div>
 </div>
 
@@ -953,6 +758,7 @@
         </div>
     </div>
 
+    <!-- 模块一 -->
     <div class="step-content-card active" id="card-step1">
         <div class="card-title"><i class="fa-solid fa-compact-disc"></i> 模块一：沙发区专属“入职第一课”</div>
         
@@ -979,7 +785,7 @@
             <div class="video-wrapper">
                 <video id="real-video-player" src="https://cropgif.net/videos/1781582511956-4d79f356-4109-4cc8-95d4-9082c167b0bb.mp4" poster="https://cropgif.net/images/1781141171194-e2fa34a6-1e2e-45ef-915e-81935b4629c8.png" controls preload="metadata" playsinline webkit-playsinline></video>
             </div>
-            <p style="color:rgba(255,255,255,0.7); font-size:11px; text-align:center; margin-top:6px;">🎬 视频模块已就绪，后续上传真实MP4视频链接后即可直接播放</p>
+            <p style="color:rgba(255,255,255,0.7); font-size:11px; text-align:center; margin-top:6px;">🎬 视频模块已就绪，播放完毕后将自动解锁下一步骤</p>
         </div>
 
         <div class="media-section-title">
@@ -1011,6 +817,7 @@
         <button class="action-submit-btn" id="step1-next-btn" disabled onclick="completeStep(1, 2)">请完成签到并观看入职第一课视频</button>
     </div>
 
+    <!-- 模块二 -->
     <div class="step-content-card" id="card-step2">
         <div class="card-title"><i class="fa-solid fa-id-card"></i> 模块二：职前服务平台操作指南</div>
         
@@ -1025,6 +832,7 @@
         <button class="action-submit-btn" onclick="completeStep(2, 3)">两项步骤已在微信完成，去下载云办公 <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
+    <!-- 模块三 -->
     <div class="step-content-card" id="card-step3">
         <div class="card-title"><i class="fa-solid fa-download"></i> 模块三：云办公 APP 下载与避坑配置</div>
         
@@ -1055,6 +863,7 @@
         <button class="action-submit-btn" onclick="completeStep(3, 4)">已登录云办公，去进行通关测试 <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
+    <!-- 模块四 -->
     <div class="step-content-card" id="card-step4">
         <div class="card-title"><i class="fa-solid fa-flag-checkered"></i> 模块四：自助报到圆满通关</div>
         
@@ -1074,16 +883,15 @@
         <button class="action-submit-btn" style="background:var(--xdf-success);" onclick="finishAll()">圆满完成自助入职</button>
     </div>
 
+    <!-- 底部挂件与动态求助区 -->
     <div class="bottom-support-bar">
         <div class="text-consult-panel">
             <div class="text-consult-title">
-                <i class="fa-solid fa-keyboard" style="color:var(--xdf-primary);"></i> 内向老师专属：零压力填空式文字咨询
+                <i class="fa-solid fa-keyboard" style="color:var(--xdf-primary);"></i> 内向老师专属：零压力动态提问（免开口）
             </div>
-            <div class="prefilled-textarea-mock">
-                “您好！我是今天入职的老师，目前正在 <b>3层沙发区</b> 自助办理。我想问一下：<span>（在此处输入老师您遇到的疑问）</span> ”
-            </div>
-            <button onclick="handleDingtalkJump('dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ', '求助HR')" class="inner-jump-btn" style="background:var(--xdf-primary); color:white; font-size:12px; padding:8px;">
-                <i class="fa-solid fa-comment-dots"></i> 一键拉起文字对话窗口（免开口）
+            <textarea id="customConsultInput" class="custom-question-textarea" placeholder="在此输入您遇到的问题（例如：找不到柜子F / Wi-Fi验证码没收到）"></textarea>
+            <button onclick="sendCustomConsult()" class="inner-jump-btn" style="background:var(--xdf-primary); color:white; font-size:12px; padding:9px;">
+                <i class="fa-solid fa-comment-dots"></i> 一键将问题带入钉钉求助 HR
             </button>
         </div>
 
@@ -1095,43 +903,17 @@
 
 </div>
 
+<!-- 全局统一高颜值弹窗 -->
 <div class="modal-overlay" id="global-modal" onclick="if(event.target===this) closeModal()">
     <div class="modal-body">
         <div style="position:absolute; right:14px; top:14px; font-size:22px; color:var(--text-muted); cursor:pointer;" onclick="closeModal()"><i class="fa-solid fa-circle-xmark"></i></div>
         <h4 id="modal-title" style="color:var(--xdf-dark); font-size:15px; margin-bottom:12px; font-weight:bold;">查看面板</h4>
+        <div id="modal-custom-content"></div>
         <img id="modal-image" src="" alt="二维码" style="width:100%; max-height:220px; object-fit:contain; border:1px solid #EEE; border-radius:8px; margin-bottom:12px; background:#FFF; display:block;">
         <div id="modal-tip" style="font-size:12px; color:#5D6D7E; text-align:left; line-height:1.5;">提示：长按图片或扫码可进行下一步查看</div>
     </div>
 </div>
 
-<div class="feedback-section" id="feedback-section">
-    <div class="feedback-panel">
-        <div class="feedback-title">本次入职自助办理体验如何？</div>
-        <div class="feedback-subtitle">请点选一个评价档位，填写建议后提交。您的反馈会帮助我们继续优化这套自助入职流程。</div>
-        <div class="rating-grid" id="rating-grid">
-            <button type="button" class="rating-option" data-rating="bad" aria-pressed="false">
-                <div class="rating-emoji">😞</div>
-                <div class="rating-label">差</div>
-                <div class="rating-hint">还有改进空间</div>
-            </button>
-            <button type="button" class="rating-option" data-rating="mid" aria-pressed="false">
-                <div class="rating-emoji">😐</div>
-                <div class="rating-label">中</div>
-                <div class="rating-hint">整体可用</div>
-            </button>
-            <button type="button" class="rating-option" data-rating="good" aria-pressed="false">
-                <div class="rating-emoji">😊</div>
-                <div class="rating-label">好</div>
-                <div class="rating-hint">体验顺畅</div>
-            </button>
-        </div>
-        <textarea id="feedback-text" class="feedback-textarea" placeholder="请留下您的宝贵建议或遇到的问题（选填）"></textarea>
-        <button class="feedback-submit-btn" id="feedback-submit-btn" type="button" onclick="submitFeedback()">提交评价</button>
-        <div class="feedback-note">✅ 恭喜您完成所有自助入职流程！办理完以上所有步骤后，请联系现场的 HR 老师或部门对接老师进行后续安排，他们将为您完成最终的入职确认。</div>
-        <div class="feedback-summary" id="feedback-summary"></div>
-    </div>
-</div>
-<div class="feedback-toast" id="feedback-toast" aria-live="polite"></div>
 <script>
     // ===== 全局核心状态机 =====
     let currentStep = 1;
@@ -1145,197 +927,6 @@
     const pTimeDisplay = document.getElementById('p-time-display');
     const pSpeedBtn = document.getElementById('p-speed-btn');
     const videoPlayer = document.getElementById('real-video-player');
-    const feedbackStorageKey = 'xdf_feedback_submission_v1';
-    const feedbackChoiceKey = 'xdf_feedback_choice_v1';
-    const feedbackState = {
-        selected: '',
-        submitted: false,
-        submission: null
-    };
-
-    function safeStorage() {
-        try {
-            const storage = window.localStorage;
-            const probeKey = '__xdf_storage_probe__';
-            storage.setItem(probeKey, '1');
-            storage.removeItem(probeKey);
-            return storage;
-        } catch (error) {
-            return null;
-        }
-    }
-
-    const storageBridge = safeStorage();
-
-    function readStored(key) {
-        try {
-            return storageBridge ? storageBridge.getItem(key) : null;
-        } catch (error) {
-            return null;
-        }
-    }
-
-    function writeStored(key, value) {
-        try {
-            if (storageBridge) {
-                storageBridge.setItem(key, String(value));
-            }
-        } catch (error) {}
-    }
-
-    function clearStored() {
-        try {
-            if (storageBridge) {
-                storageBridge.clear();
-            }
-        } catch (error) {}
-    }
-
-    function safeClipboardWrite(text) {
-        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-            return navigator.clipboard.writeText(text).then(() => true).catch(() => fallbackCopyText(text));
-        }
-        return Promise.resolve(fallbackCopyText(text));
-    }
-
-    function fallbackCopyText(text) {
-        try {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.setAttribute('readonly', 'readonly');
-            textarea.style.position = 'fixed';
-            textarea.style.top = '-9999px';
-            document.body.appendChild(textarea);
-            textarea.select();
-            const copied = document.execCommand('copy');
-            document.body.removeChild(textarea);
-            return copied;
-        } catch (error) {
-            return false;
-        }
-    }
-
-    function safeOpenUrl(url, target) {
-        try {
-            const opened = window.open(url, target || '_blank');
-            if (!opened) {
-                window.location.href = url;
-            }
-        } catch (error) {
-            window.location.href = url;
-        }
-    }
-
-    function safeNavigate(url) {
-        try {
-            window.location.href = url;
-        } catch (error) {}
-    }
-
-    function hideSplash() {
-        const splash = document.getElementById('logoSplash');
-        if (splash) {
-            splash.style.display = 'none';
-        }
-    }
-
-    function showFeedbackToast(message) {
-        const toast = document.getElementById('feedback-toast');
-        if (!toast) return;
-        toast.textContent = message;
-        toast.classList.add('show');
-        window.clearTimeout(showFeedbackToast._timer);
-        showFeedbackToast._timer = window.setTimeout(() => {
-            toast.classList.remove('show');
-        }, 2600);
-    }
-
-    function setFeedbackSelection(level) {
-        feedbackState.selected = level;
-        writeStored(feedbackChoiceKey, level);
-        document.querySelectorAll('.rating-option').forEach((button) => {
-            const active = button.dataset.rating === level;
-            button.classList.toggle('selected', active);
-            button.setAttribute('aria-pressed', active ? 'true' : 'false');
-        });
-    }
-
-    function initFeedback() {
-        const buttons = Array.from(document.querySelectorAll('.rating-option'));
-        const submitBtn = document.getElementById('feedback-submit-btn');
-        const textarea = document.getElementById('feedback-text');
-        const summary = document.getElementById('feedback-summary');
-        if (!buttons.length || !submitBtn || !textarea || !summary) return;
-
-        buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-                if (feedbackState.submitted) return;
-                setFeedbackSelection(button.dataset.rating);
-                if (button.animate) {
-                    button.animate([
-                        { transform: 'translateY(-2px) scale(1)' },
-                        { transform: 'translateY(-2px) scale(1.06)' },
-                        { transform: 'translateY(-2px) scale(1)' }
-                    ], { duration: 360, easing: 'ease-out' });
-                }
-            });
-        });
-
-        const savedSelection = readStored(feedbackChoiceKey);
-        const savedSubmission = readStored(feedbackStorageKey);
-        if (savedSelection) {
-            setFeedbackSelection(savedSelection);
-        }
-
-        if (savedSubmission) {
-            try {
-                feedbackState.submission = JSON.parse(savedSubmission);
-                feedbackState.submitted = true;
-                textarea.value = feedbackState.submission.comment || '';
-                textarea.disabled = true;
-                submitBtn.disabled = true;
-                summary.textContent = '感谢您的反馈，我们已记录这次体验。';
-                summary.classList.add('show');
-                submitBtn.textContent = '评价已提交';
-            } catch (error) {}
-        }
-    }
-
-    function submitFeedback() {
-        const submitBtn = document.getElementById('feedback-submit-btn');
-        const textarea = document.getElementById('feedback-text');
-        const summary = document.getElementById('feedback-summary');
-        if (!submitBtn || !textarea || !summary) return;
-        if (feedbackState.submitted || readStored(feedbackStorageKey)) {
-            showFeedbackToast('评价已提交，感谢您的反馈');
-            return;
-        }
-        if (!feedbackState.selected) {
-            showFeedbackToast('请先选择一个评价档位');
-            return;
-        }
-
-        const levelTextMap = { bad: '差', mid: '中', good: '好' };
-        const payload = {
-            rating: feedbackState.selected,
-            ratingText: levelTextMap[feedbackState.selected] || feedbackState.selected,
-            comment: textarea.value.trim(),
-            pageUrl: window.location.href,
-            submittedAt: new Date().toISOString(),
-            userAgent: navigator.userAgent
-        };
-
-        console.log('xdf_feedback', payload);
-        writeStored(feedbackStorageKey, JSON.stringify(payload));
-        feedbackState.submitted = true;
-        feedbackState.submission = payload;
-        textarea.disabled = true;
-        submitBtn.disabled = true;
-        submitBtn.textContent = '评价已提交';
-        summary.textContent = '感谢您的反馈，我们已记录这次体验。';
-        summary.classList.add('show');
-        showFeedbackToast('感谢反馈，已成功提交');
-    }
 
     // 检测微信内置环境
     function isWeChatEnvironment() {
@@ -1344,9 +935,9 @@
 
     // ===== 页面加载生命周期：无缝恢复候选人进度锁 =====
     window.addEventListener('DOMContentLoaded', () => {
-        const savedStep = readStored('xdf_candidate_step');
-        const savedCheckin = readStored('xdf_candidate_checkin');
-        const savedVideoDone = readStored('xdf_candidate_video_done');
+        const savedStep = localStorage.getItem('xdf_candidate_step');
+        const savedCheckin = localStorage.getItem('xdf_candidate_checkin');
+        const savedVideoDone = localStorage.getItem('xdf_candidate_video_done');
 
         if (savedCheckin === 'true') {
             isCheckedIn = true;
@@ -1360,61 +951,121 @@
             executeStepRender(currentStep);
         }
         resetInactivityTimer();
-        initFeedback();
     });
 
-    // ===== 痛点优化 1：高能 Wi-Fi 隐藏网络添加指南功能 =====
+    // ===== 页面隐藏/切出事件处理：优化多媒体体验 =====
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            if (audio && !audio.paused) {
+                audio.pause();
+                pPlayBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            }
+            if (videoPlayer && !videoPlayer.paused) {
+                videoPlayer.pause();
+            }
+        }
+    });
+
+    // ===== 动态提问整合 =====
+    function sendCustomConsult(overrideMsg) {
+        const inputEl = document.getElementById('customConsultInput');
+        let userQuestion = overrideMsg || (inputEl ? inputEl.value.trim() : '');
+        let textToCopy = "您好！我是今天入职的新老师，目前正在 3层沙发区 自助办理。";
+        if (userQuestion) {
+            textToCopy += "【我的疑问】：" + userQuestion;
+        } else {
+            textToCopy += "想咨询一下入职相关问题。";
+        }
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            if (isWeChatEnvironment()) {
+                document.getElementById('modal-title').innerText = "💡 微信环境防卡死提示";
+                document.getElementById('modal-custom-content').innerHTML = '';
+                document.getElementById('modal-image').style.display = 'block';
+                document.getElementById('modal-image').src = "https://cropgif.net/images/1781084821182-830dbdeb-3d81-4b8c-b638-0d30a2f47a08.png";
+                document.getElementById('modal-tip').innerHTML = `
+                    <div class="wechat-notice-box">
+                        您的求助内容已自动复制到剪贴板！<br><br>
+                        <b>🌟 免开口顺畅办理指引：</b><br>
+                        1. 建议点击右上角 <b>【···】</b> 选择 <b>【在浏览器中打开】</b> 直达钉钉！<br>
+                        2. 亦可切回 <b>【钉钉 App】</b>，在顶部搜索框搜索 <b>“HR小助手”</b> 粘贴发送即可。<br>
+                    </div>
+                `;
+                document.getElementById('global-modal').style.display = 'flex';
+            } else {
+                showSuccessToast("问题已复制，正在拉起钉钉...");
+                setTimeout(() => {
+                    window.location.href = "dingtalk://dingtalkclient/action/jumprobot?dingtalkid=$:LWCP_v1:$gTbF65IunT1tKCE4JrqNedBtEvbKaEEJ";
+                }, 300);
+            }
+        });
+    }
+
+    // ===== Wi-Fi 隐藏网络多系统选项卡指导 =====
     function copyWifi() {
-        // 自动写入剪贴板
-        safeClipboardWrite('XDF').then(() => {
-            // 精准呈现手动添加隐藏网络的防抓瞎向导弹窗
+        navigator.clipboard.writeText('XDF').then(() => {
             document.getElementById('modal-title').innerText = "📶 专属无线网连接秘籍";
-            document.getElementById('modal-image').style.display = 'none'; // 隐藏无用图
-            document.getElementById('modal-tip').innerHTML = `
-                <div class="wechat-notice-box" style="border-left-color: var(--xdf-warm); background: #FEF9E7;">
-                    📱 网络名称 <b style="color:var(--xdf-warm);">XDF</b> 已成功复制到您的剪贴板！<br><br>
-                    若您的无线网列表中<b>找不到 XDF 信号</b>，请按如下步骤手动添加网络：<br>
-                    1️⃣ 滑动到手机无线网列表最下方，点击 <b>【添加网络】</b>（或其它网络）；<br>
-                    2️⃣ 网络名称/SSID 手动输入：<b style="color:var(--xdf-primary)">XDF</b><br>
-                    3️⃣ 安全性/加密类型务必选择：<b>【无】</b> (或 None)；<br>
-                    4️⃣ 点击连接后，手机会自动弹出浏览器，<b>输入您的手机号获取验证码</b>，登录即可成功联网！
+            document.getElementById('modal-image').style.display = 'none';
+            document.getElementById('modal-custom-content').innerHTML = `
+                <div class="wifi-tab-bar">
+                    <button class="wifi-tab-btn active" id="tab-ios" onclick="switchWifiTab('ios')">🍏 iOS 苹果系统</button>
+                    <button class="wifi-tab-btn" id="tab-android" onclick="switchWifiTab('android')">🤖 Android 安卓系统</button>
+                </div>
+                <div id="wifi-guide-ios" class="wechat-notice-box" style="border-left-color: var(--xdf-primary); background: #F0F8FF;">
+                    <b>网络名称 [ XDF ] 已复制到剪贴板！</b><br><br>
+                    1. 打开【设置】->【无线局域网】；<br>
+                    2. 滑动到下方点击<b>【其它...】</b>；<br>
+                    3. 名称输入：<b style="color:var(--xdf-primary)">XDF</b>，安全性选择：<b>无</b>；<br>
+                    4. 点击右上角【连接】，等待自动弹出登录页获取验证码。
+                </div>
+                <div id="wifi-guide-android" class="wechat-notice-box" style="display:none; border-left-color: var(--xdf-warm); background: #FEF9E7;">
+                    <b>网络名称 [ XDF ] 已复制到剪贴板！</b><br><br>
+                    1. 打开【设置】->【WLAN/无线网络】；<br>
+                    2. 拉到最底部点击<b>【添加网络】</b>；<br>
+                    3. 网络名称/SSID粘贴：<b style="color:var(--xdf-primary)">XDF</b>，安全性选<b>无/None</b>；<br>
+                    4. 点击保存后在列表中点击连接，输入手机号联网。
                 </div>
             `;
+            document.getElementById('modal-tip').innerText = "提示：按上述指引手动输入网络名称即可搜到信号";
             document.getElementById('global-modal').style.display = 'flex';
         }).catch(() => {
             alert('Wi-Fi名称 [ XDF ] 已复制，安全性请选择 [ 无 ]');
         });
     }
 
-    // ===== 痛点优化 2：唤起钉钉的微信环境重试及防护 =====
+    function switchWifiTab(type) {
+        document.getElementById('tab-ios').classList.toggle('active', type === 'ios');
+        document.getElementById('tab-android').classList.toggle('active', type === 'android');
+        document.getElementById('wifi-guide-ios').style.display = type === 'ios' ? 'block' : 'none';
+        document.getElementById('wifi-guide-android').style.display = type === 'android' ? 'block' : 'none';
+    }
+
+    // ===== 唤起钉钉及微信防死局拦截 =====
     function handleDingtalkJump(targetUrl, type) {
         let textToCopy = "HR小助手";
-        if (type === '求助HR') {
-            textToCopy = "您好！我是今天入职的老师，目前正在3层沙发区自助办理。想咨询一下入职相关问题。";
-        } else if (type === '互动测试') {
+        if (type === '互动测试') {
             textToCopy = "俱乐部";
         }
 
-        safeClipboardWrite(textToCopy).then(() => {
+        navigator.clipboard.writeText(textToCopy).then(() => {
             if (isWeChatEnvironment()) {
-                let copyTip = type === '求助HR' ? '“求助信息”' : '互动测试关键词“俱乐部”';
                 document.getElementById('modal-title').innerText = "💡 微信环境防卡死提示";
+                document.getElementById('modal-custom-content').innerHTML = '';
                 document.getElementById('modal-image').style.display = 'block';
                 document.getElementById('modal-image').src = "https://cropgif.net/images/1781084821182-830dbdeb-3d81-4b8c-b638-0d30a2f47a08.png";
                 document.getElementById('modal-tip').innerHTML = `
                     <div class="wechat-notice-box">
                         由于微信外部阻断限制，暂时无法直接唤醒钉钉客户端。<br><br>
                         <b>🌟 免开口顺畅办理指引：</b><br>
-                        1. 强烈建议点击右上角 <b>【···】</b> 选择 <b>【在浏览器中打开】</b>，即可实现一键无缝拉起钉钉！<br>
-                        2. 亦可直接切回您的 <b>【钉钉 App】</b>，在顶部搜索框直接粘贴搜索 <b>“HR小助手”</b> 即可。<br>
-                        <span style="color:var(--xdf-primary); font-weight:bold;">* 相关${copyTip}已自动复制，无需再次打字。</span>
+                        1. 建议点击右上角 <b>【···】</b> 选择 <b>【在浏览器中打开】</b> 秒级唤醒！<br>
+                        2. 或切回 <b>【钉钉 App】</b> 顶部搜索框粘贴 <b>“HR小助手”</b>。<br>
                     </div>
                 `;
                 document.getElementById('global-modal').style.display = 'flex';
             } else {
                 showSuccessToast("正在安全唤醒钉钉客户端...");
                 setTimeout(() => {
-                    safeNavigate(targetUrl);
+                    window.location.href = targetUrl;
                 }, 300);
             }
         });
@@ -1423,8 +1074,8 @@
     // 确认落座前置签到
     function doCheckin() {
         isCheckedIn = true;
-        writeStored('xdf_candidate_checkin', 'true');
-        safeOpenUrl('https://form.wjx.com/vm/PnjcYyg.aspx#', '_blank');
+        localStorage.setItem('xdf_candidate_checkin', 'true');
+        window.open('https://form.wjx.com/vm/PnjcYyg.aspx#', '_blank');
 
         repairCheckinUI();
         unlockStep1NextButton();
@@ -1447,7 +1098,6 @@
         }
     }
 
-    // 全局陪伴状态随步骤平滑更新
     function updateCompanionStatus(stepNum) {
         const barText = document.getElementById('companion-text');
         const badge = document.getElementById('companion-progress-badge');
@@ -1462,14 +1112,13 @@
         }
     }
 
-    // 步骤流转核心控制
     function switchStep(stepNum) {
         if (stepNum > 1 && !isCheckedIn) {
             alert('为了保障沙发区HR能精准定位到您，请老师先点击模块一的【一键确认落座办理】完成前置签到。');
             return;
         }
         currentStep = stepNum;
-        writeStored('xdf_candidate_step', stepNum); // 本地锁死进度
+        localStorage.setItem('xdf_candidate_step', stepNum);
         executeStepRender(stepNum);
     }
 
@@ -1488,7 +1137,6 @@
         resetInactivityTimer();
         document.getElementById('help-toast').classList.remove('show');
 
-        // 接待员享享的温馨提示文本更新
         const title = document.getElementById('xiangxiang-title');
         const text = document.getElementById('xiangxiang-text');
         if (!title || !text) return;
@@ -1514,7 +1162,6 @@
         switchStep(next);
     }
 
-    // 音频及多媒体播放流控制
     function toggleAudio() {
         if (audio.paused) {
             audio.play();
@@ -1560,7 +1207,6 @@
         if(fill){ fill.style.width = (step * 25) + '%'; }
     }
 
-    // 防流失主动求助计时器
     function resetInactivityTimer() {
         clearInactivityTimer();
         if (!isCheckedIn || toastShownForStep[currentStep]) return; 
@@ -1579,13 +1225,11 @@
     }
 
     document.addEventListener('click', resetInactivityTimer);
-    document.addEventListener('touchstart', resetInactivityTimer, { passive: true });
-    document.addEventListener('pointerdown', resetInactivityTimer, { passive: true });
+    document.addEventListener('touchstart', resetInactivityTimer);
 
-    // 视频播放完毕后自动解锁第一关限制
     if(videoPlayer){
         videoPlayer.addEventListener('ended', () => {
-            writeStored('xdf_candidate_video_done', 'true');
+            localStorage.setItem('xdf_candidate_video_done', 'true');
             const nav = document.getElementById('nav-step1');
             if (nav) nav.classList.add('completed');
             unlockStep1NextButton();
@@ -1595,6 +1239,7 @@
 
     function openModal(title, qrUrl) {
         document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-custom-content').innerHTML = '';
         document.getElementById('modal-image').style.display = 'block';
         document.getElementById('modal-image').src = qrUrl;
         document.getElementById('modal-tip').innerText = "提示：长按图片或扫码可进行下一步查看";
@@ -1620,7 +1265,7 @@
     }, 2000);
 
     function finishAll() {
-        clearStored(); // 自助报到顺利完成后清除本地状态
+        localStorage.clear();
         document.body.innerHTML = `
             <div style="display:flex; height:100vh; align-items:center; justify-content:center; flex-direction:column; font-family:sans-serif; text-align:center; padding:24px;">
                 <i class="fa-solid fa-circle-check" style="font-size:56px; color:#2ECC71; margin-bottom:16px;"></i>
